@@ -15,7 +15,12 @@ export default function Home() {
     setIsOpen(!isOpen);
   };
 
-  const LINKS: string[] = ["home", "7lk", "8lk", "9lk"];
+  const LINKS: string[] = [
+    "sisalto/home",
+    "sisalto/7lk",
+    "sisalto/8lk",
+    "sisalto/9lk",
+  ];
 
   return (
     <div className="bg-gradient-to-br from-gray-900 to-blue-900 h-screen overflow-hidden">

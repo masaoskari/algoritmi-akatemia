@@ -12,19 +12,13 @@ const withMDX = nextMDX({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /*   webpack: (config, { isServer }) => {
-    if (!isServer) {
-      //config.plugins.push(new PyodidePlugin());
-      config.resolve.alias["node-fetch"] = false;
-    }
-    if (isServer) {
-      config.externals = ["pyodide", ...(config.externals || [])];
-    }
-    return config;
-  }, */
   // Configure `pageExtensions` to include MDX files
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
-  // Optionally, add any other Next.js config below
+  output: "export",
+  basePath: "/algoritmi-akatemia",
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default withMDX(nextConfig);

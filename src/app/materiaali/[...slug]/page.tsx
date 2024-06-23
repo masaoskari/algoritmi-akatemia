@@ -2,7 +2,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import React from "react";
 import { Excercise } from "@/components/Excercise";
 import { MDXComponents } from "mdx/types";
-import { getContentBySlug } from "@/lib/mdxUtils";
+import { getContentBySlug, getAllContentSlugs } from "@/lib/mdxUtils";
 import rehypeHighlight from "rehype-highlight";
 
 const options = {
@@ -31,4 +31,8 @@ export default function ContentPage({
       ></MDXRemote>
     </div>
   );
+}
+export async function generateStaticParams() {
+  const slugs = getAllContentSlugs();
+  return slugs.map((slug) => ({ slug: slug.split("/") }));
 }

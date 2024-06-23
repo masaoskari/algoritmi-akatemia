@@ -52,7 +52,7 @@ const Treeview = ({
       >
         {categories.map((category) => {
           return (
-            <>
+            <div key={category}>
               <h1 className="text-white text-center">{category}</h1>
               {frontMatters
                 .filter((data) => data.category === category)
@@ -63,7 +63,7 @@ const Treeview = ({
                     </p>
                   </Link>
                 ))}
-            </>
+            </div>
           );
         })}
       </div>
