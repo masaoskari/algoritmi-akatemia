@@ -4,14 +4,15 @@ import { useState } from "react";
 import Image from "next/image";
 import Logo from "../../public/a_a_logo.svg";
 import { IoIosClose, IoIosMenu } from "react-icons/io";
+import { useRouter } from "next/navigation";
 
 const Treeview = ({
   frontMatters,
 }: {
   frontMatters: Record<string, string>[];
 }) => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -27,9 +28,10 @@ const Treeview = ({
     >
       <div className="flex justify-between items-start md:justify-center">
         <Image
-          className="w-1/12 md:w-1/4"
+          className="w-1/12 md:w-1/4 cursor-pointer"
           src={Logo}
           alt="Algoritmi akatemia logo"
+          onClick={() => router.push("/")}
         />
 
         {isOpen ? (
@@ -57,7 +59,7 @@ const Treeview = ({
               {frontMatters
                 .filter((data) => data.category === category)
                 .map((item) => (
-                  <Link key={item.slug} href={`/${item.slug}`}>
+                  <Link key={item.slug} href={`/materiaali/${item.slug}`}>
                     <p className="block mr-4 ml-4 hover:bg-white hover:text-black text-white p-2 rounded text-center">
                       {item.title}
                     </p>

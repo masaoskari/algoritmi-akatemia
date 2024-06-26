@@ -15,12 +15,7 @@ export default function Home() {
     setIsOpen(!isOpen);
   };
 
-  const LINKS: string[] = [
-    "sisalto/home",
-    "sisalto/7lk",
-    "sisalto/8lk",
-    "sisalto/9lk",
-  ];
+  const LINKS: string[] = ["home", "7lk", "8lk", "9lk"];
 
   return (
     <div className="bg-gradient-to-br from-gray-900 to-blue-900 h-screen overflow-hidden">
@@ -43,17 +38,17 @@ export default function Home() {
         )}
         <nav
           className={
-            "w-full md:flex md:flex-row flex-col gap-4 p-4 mx-auto " +
+            "w-full md:flex md:flex-row flex-col gap-8 p-4 mx-auto " +
             (isOpen ? "flex" : "hidden")
           }
         >
           {LINKS.map((link) => {
-            if (link === "Home") {
+            if (link === "home") {
               return (
                 <Link
                   key={link}
                   href="/"
-                  className="text-white hover:text-gray-500 text-center capitalize"
+                  className="text-white font-medium text-xl hover:text-gray-500 text-center capitalize"
                 >
                   {link}
                 </Link>
@@ -62,8 +57,8 @@ export default function Home() {
             return (
               <Link
                 key={link}
-                href={`/${link}`}
-                className="text-white hover:text-gray-500 text-center capitalize"
+                href={`/materiaali/${link}`}
+                className="text-white font-medium text-xl hover:text-gray-500 text-center capitalize"
               >
                 {link}
               </Link>
