@@ -1,9 +1,9 @@
 import { getAllContentFrontMatters } from "@/lib/mdxUtils";
-import Treeview from "@/components/Treeview";
+import SidePanelContent from "@/components/SidePanelContent";
 
 const SidePanel = () => {
   const frontMatters = getAllContentFrontMatters();
-  return <Treeview frontMatters={frontMatters} />;
+  return <SidePanelContent frontMatters={frontMatters} />;
 };
 
 export default SidePanel;

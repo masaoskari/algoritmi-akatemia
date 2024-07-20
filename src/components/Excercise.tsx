@@ -40,13 +40,19 @@ export const Excercise = ({
           <p className="text-white">Nimi</p>
           <p className="text-white">Pisteet: 10</p>
         </div>
-        {children}
+        <div className="pl-4">{children}</div>
 
         <Editor
           className="bg-black"
           width={"500px"}
           options={{
             minimap: { enabled: false },
+            glyphMargin: false,
+            // Disable unnecessary editor features
+            scrollBeyondLastLine: false,
+            overviewRulerBorder: false, // Hide overview ruler border
+            overviewRulerLanes: 0, // Hide overview ruler lanes
+            hideCursorInOverviewRuler: true, // Hide cursor in overview ruler
           }}
           height={"200px"}
           defaultLanguage="python"
@@ -54,13 +60,20 @@ export const Excercise = ({
         />
 
         <button
-          className="bg-blue-600 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded"
+          className="bg-blue-600 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded ml-4"
           onClick={runCode}
         >
           Suorita
         </button>
 
-        <p style={{ whiteSpace: "pre-wrap" }}>{output}</p>
+        <div
+          style={{ whiteSpace: "pre-wrap" }}
+          className="m-4 min-h-[200px] shadow-lg"
+        >
+          <p className="font-semibold pl-4">Konsoli</p>
+          <div className="px-4 pb-4">{output}</div>
+        </div>
+        <br />
       </div>
     </>
   );

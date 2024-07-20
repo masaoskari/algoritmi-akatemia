@@ -3,10 +3,10 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 import Logo from "../../public/a_a_logo.svg";
-import { IoIosClose, IoIosMenu } from "react-icons/io";
 import { useRouter } from "next/navigation";
+import { Spin as Hamburger } from "hamburger-react";
 
-const Treeview = ({
+const SidePanelContent = ({
   frontMatters,
 }: {
   frontMatters: Record<string, string>[];
@@ -22,11 +22,13 @@ const Treeview = ({
   return (
     <div
       className={
-        "bg-gradient-to-br from-gray-900 to-blue-900 flex flex-col items-center gap-4 md:w-[20%] " +
-        (isOpen ? "w-screen h-screen p-4" : "w-full p-4")
+        "abosolute opacity-95 transition-all duration-400 transparent-50 bg-gradient-to-br from-gray-900 to-blue-900 flex flex-col items-center gap-4 md:w-[20%] " +
+        (isOpen
+          ? "w-screen h-screen p-4 md:h-screen"
+          : "w-full h-24 md:h-screen p-4")
       }
     >
-      <div className="flex justify-between items-start md:justify-center">
+      <div className="flex justify-between items-center md:justify-center">
         <Image
           className="w-1/12 md:w-1/4 cursor-pointer"
           src={Logo}
@@ -34,22 +36,19 @@ const Treeview = ({
           onClick={() => router.push("/")}
         />
 
-        {isOpen ? (
-          <IoIosClose
-            className="text-white text-3xl cursor-pointer md:hidden m-4"
-            onClick={toggleMenu}
+        <div className="md:hidden">
+          <Hamburger
+            color="white"
+            toggled={isOpen}
+            size={25}
+            toggle={toggleMenu}
           />
-        ) : (
-          <IoIosMenu
-            className="text-white text-3xl cursor-pointer md:hidden m-4"
-            onClick={toggleMenu}
-          />
-        )}
+        </div>
       </div>
       <div
         className={
           "md:flex md:flex-col w-full gap-4 " +
-          (isOpen ? "flex flex-col " : "hidden")
+          (isOpen ? "flex flex-col h-screen" : "hidden")
         }
       >
         {categories.map((category) => {
@@ -73,4 +72,4 @@ const Treeview = ({
   );
 };
 
-export default Treeview;
+export default SidePanelContent;

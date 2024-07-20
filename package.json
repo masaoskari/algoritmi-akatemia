@@ -22,6 +22,7 @@
     "fs": "^0.0.1-security",
     "glob": "^10.4.1",
     "gray-matter": "^4.0.3",
+    "hamburger-react": "^2.5.1",
     "install": "^0.13.0",
     "next": "14.2.3",
     "next-mdx-remote": "^5.0.0",
