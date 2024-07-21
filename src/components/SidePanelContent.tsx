@@ -22,10 +22,8 @@ const SidePanelContent = ({
   return (
     <div
       className={
-        "abosolute opacity-95 transition-all duration-400 transparent-50 bg-gradient-to-br from-gray-900 to-blue-900 flex flex-col items-center gap-4 md:w-[20%] " +
-        (isOpen
-          ? "w-screen h-screen p-4 md:h-screen"
-          : "w-full h-24 md:h-screen p-4")
+        "transition-all duration-400 bg-gradient-to-br from-gray-900 to-blue-900 flex flex-col items-center gap-4 md:w-[20%] " +
+        (isOpen ? "w-screen h-screen p-4" : "w-full h-24 md:h-screen p-4")
       }
     >
       <div className="flex justify-between items-center md:justify-center">
