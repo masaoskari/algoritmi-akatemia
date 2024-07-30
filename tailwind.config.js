@@ -3,11 +3,12 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     fontFamily: {
-      sans: ["Roboto", "sans-serif"],
+      sans: ["Open sans", "sans-serif"],
     },
     extend: {
       colors: {
         primary: "#20BAF6",
+        background: "#11111D",
       },
       /* https://stackoverflow.com/questions/73067312/remove-prose-from-a-child-tailwind-typography */
       typography: {
