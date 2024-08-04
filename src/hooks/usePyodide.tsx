@@ -1,10 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { PyodideContext } from "@/context/PyodideProvider";
 
 function usePyodide() {
-  const { pyodide, isPyodideLoading, hasLoadPyodideBeenCalled } =
-    useContext(PyodideContext);
-  const [output, setOutput] = useState(null);
+  const { pyodide } = useContext(PyodideContext);
+
   const runPythonCode = async (code: string) => {
     await pyodide.runPythonAsync(`
       import sys
@@ -24,7 +23,7 @@ function usePyodide() {
     try {
       await pyodide.runPythonAsync(code);
       let result = await pyodide.runPythonAsync("sys.stdout.getvalue()");
-      setOutput(result);
+      return result;
     } catch (error) {
       await pyodide.runPythonAsync(`
         import traceback
@@ -32,11 +31,11 @@ function usePyodide() {
             return ''.join(traceback.format_exception(sys.last_type, sys.last_value, sys.last_traceback))
       `);
       let traceback = await pyodide.runPythonAsync("get_traceback()");
-      setOutput(traceback.toString());
+      return traceback.toString();
     }
   };
 
-  return { output, runPythonCode };
+  return { runPythonCode };
 }
 
 export default usePyodide;
