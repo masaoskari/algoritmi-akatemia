@@ -2,8 +2,7 @@
 import Hamburger from "hamburger-react";
 import Link from "next/link";
 import { useState } from "react";
-import Image from "next/image";
-import Logo from "../../public/a_a_logo.svg";
+import { LogoWithText } from "@/components/LogoWithText";
 
 export const MainNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,18 +32,7 @@ export const MainNavigation = () => {
           (isOpen ? "flex" : "hidden")
         }
       >
-        <Link className="flex" href="/">
-          <Image
-            priority
-            src={Logo}
-            className="w-[50px] h-[50px]"
-            alt="Algoritmi akatemia logo"
-          />
-          <div className="flex flex-col">
-            <p className="text-white font-bold">Algorigmi</p>
-            <p className="text-primary font-bold">Akatemia</p>
-          </div>
-        </Link>
+        <LogoWithText />
         <Link
           href="#tietoja"
           className="text-white font-bold text-xl hover:text-gray-500 text-center capitalize"

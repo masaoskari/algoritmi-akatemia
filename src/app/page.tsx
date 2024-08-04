@@ -72,7 +72,7 @@ export default function Home() {
           ) : (
             <div className="text-center">
               <h1 className="text-primary font-bold text-5xl">Algoritmi</h1>
-              <h1 className="text-white font-bold text-5xl">akatemia</h1>
+              <h1 className="text-white font-bold text-5xl">Akatemia</h1>
               <p className="text-white text-base">
                 Löydä matikan uusi ulottuvuus koodauksen avulla
               </p>

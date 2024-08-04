@@ -2,6 +2,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import React from "react";
 import { Excercise } from "@/components/Excercise";
 import { CodeEditor } from "@/components/CodeEditor";
+import { ExamplePrint } from "@/components/ExamplePrint";
 import { MDXComponents } from "mdx/types";
 import { getContentBySlug, getAllContentSlugs } from "@/lib/mdxUtils";
 import rehypeHighlight from "rehype-highlight";
@@ -14,8 +15,9 @@ const options = {
 };
 
 const components: MDXComponents = {
-  Excercise: Excercise,
-  CodeEditor: CodeEditor,
+  Harjoitus: Excercise,
+  KoodiEditori: CodeEditor,
+  EsimerkkiTulostus: ExamplePrint,
 };
 
 export default function ContentPage({
