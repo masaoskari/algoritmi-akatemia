@@ -27,7 +27,7 @@ export default function ContentPage({
 }) {
   const { content } = getContentBySlug(params.slug.join("/"));
   return (
-    <div className="prose">
+    <div className="prose mx-auto">
       <MDXRemote
         source={content}
         components={components}
