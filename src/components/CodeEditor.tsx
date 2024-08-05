@@ -3,7 +3,16 @@ import usePyodide from "@/hooks/usePyodide";
 import Editor, { OnMount } from "@monaco-editor/react";
 import { useRef, useState } from "react";
 import { editor } from "monaco-editor";
+import CodeMirror from "@uiw/react-codemirror";
+import { vscodeLight } from "@uiw/codemirror-theme-vscode";
+import { pythonLanguage } from "@codemirror/lang-python";
+import { EditorView } from "@codemirror/view";
+import AceEditor from "react-ace-builds";
+// Import a mode (language)
+import "ace-builds/src-noconflict/mode-python";
 
+// Import a theme
+import "ace-builds/src-noconflict/theme-chrome";
 type CodeEditorProps = {
   onCodeExecution?: (output: string) => void;
   answer?: string | undefined;
@@ -23,28 +32,39 @@ export const CodeEditor = ({
   const handleEditorDidMount: OnMount = (editor) => {
     editorRef.current = editor;
   };
-
+  const [userInput, setUserInput] = useState<string>("");
+  const onCodeChange = (value: string) => {
+    setUserInput(value);
+    console.log(value);
+  };
   const runCode = async () => {
-    if (editorRef.current) {
-      const code = editorRef.current.getValue();
-      const output = await runPythonCode(code);
-      setOutput(output);
-      if (onCodeExecution) onCodeExecution(output);
-    }
+    //if (editorRef.current) {
+    //  const code = editorRef.current.getValue();
+    //  const output = await runPythonCode(code);
+    //  setOutput(output);
+    //  if (onCodeExecution) onCodeExecution(output);
+    //}
+    const output = await runPythonCode(userInput);
+    setOutput(output);
   };
 
   return (
     <div className="rounded shadow-lg flex flex-col">
       <div className="p-4 pr-8" style={{ height: `${height}px` }}>
-        <Editor
-          onMount={handleEditorDidMount}
-          defaultLanguage="python"
-          options={{
-            minimap: { enabled: false },
-            scrollBeyondLastLine: false,
-            overviewRulerLanes: 0,
-            hideCursorInOverviewRuler: true,
-          }}
+        {/*         <CodeMirror
+          height={`${height - 20}px`}
+          theme={vscodeLight}
+          //extensions={[pythonLanguage, EditorView.scrollIntoView(0)] as readonly Extension[]}
+          onChange={handleCodeMirrorChange}
+          basicSetup={{ foldGutter: false }}
+        /> */}
+        <AceEditor
+          mode="python"
+          theme="chrome"
+          width="100%"
+          height={`${height - 20}px`}
+          onChange={onCodeChange}
+          value={userInput}
         />
       </div>
       <button
