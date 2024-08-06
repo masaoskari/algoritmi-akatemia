@@ -1,18 +1,10 @@
 "use client";
 import usePyodide from "@/hooks/usePyodide";
-import Editor, { OnMount } from "@monaco-editor/react";
-import { useRef, useState } from "react";
-import { editor } from "monaco-editor";
-import CodeMirror from "@uiw/react-codemirror";
-import { vscodeLight } from "@uiw/codemirror-theme-vscode";
-import { pythonLanguage } from "@codemirror/lang-python";
-import { EditorView } from "@codemirror/view";
+import { useState } from "react";
 import AceEditor from "react-ace-builds";
-// Import a mode (language)
 import "ace-builds/src-noconflict/mode-python";
-
-// Import a theme
 import "ace-builds/src-noconflict/theme-chrome";
+
 type CodeEditorProps = {
   onCodeExecution?: (output: string) => void;
   answer?: string | undefined;
@@ -25,44 +17,28 @@ export const CodeEditor = ({
   answer = undefined,
 }: CodeEditorProps) => {
   const { runPythonCode } = usePyodide();
-
   const [output, setOutput] = useState<string>("");
-  const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
-
-  const handleEditorDidMount: OnMount = (editor) => {
-    editorRef.current = editor;
-  };
   const [userInput, setUserInput] = useState<string>("");
+
   const onCodeChange = (value: string) => {
     setUserInput(value);
     console.log(value);
   };
+
   const runCode = async () => {
-    //if (editorRef.current) {
-    //  const code = editorRef.current.getValue();
-    //  const output = await runPythonCode(code);
-    //  setOutput(output);
-    //  if (onCodeExecution) onCodeExecution(output);
-    //}
     const output = await runPythonCode(userInput);
     setOutput(output);
+    if (onCodeExecution) onCodeExecution(output);
   };
 
   return (
     <div className="rounded shadow-lg flex flex-col">
-      <div className="p-4 pr-8" style={{ height: `${height}px` }}>
-        {/*         <CodeMirror
-          height={`${height - 20}px`}
-          theme={vscodeLight}
-          //extensions={[pythonLanguage, EditorView.scrollIntoView(0)] as readonly Extension[]}
-          onChange={handleCodeMirrorChange}
-          basicSetup={{ foldGutter: false }}
-        /> */}
+      <div className="px-4 pb-4">
         <AceEditor
           mode="python"
           theme="chrome"
           width="100%"
-          height={`${height - 20}px`}
+          height={`${height}px`}
           onChange={onCodeChange}
           value={userInput}
         />
