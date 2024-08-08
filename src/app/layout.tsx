@@ -15,11 +15,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* This loads GitHub theme for rehypeHighlight. */}
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github-dark.min.css"
-        />
         <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
       </head>
       <body>

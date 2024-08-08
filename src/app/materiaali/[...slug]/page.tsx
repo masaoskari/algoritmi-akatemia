@@ -1,16 +1,17 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import React from "react";
+import "@/app/globals.css";
 import { Excercise } from "@/components/Excercise";
 import { CodeEditor } from "@/components/CodeEditor";
 import { ExamplePrint } from "@/components/ExamplePrint";
 import { MDXComponents } from "mdx/types";
 import { getContentBySlug, getAllContentSlugs } from "@/lib/mdxUtils";
-import rehypeHighlight from "rehype-highlight";
+import rehypePrettyCode from "rehype-pretty-code";
 
 const options = {
   mdxOptions: {
     remarkPlugins: [],
-    rehypePlugins: [rehypeHighlight],
+    rehypePlugins: [[rehypePrettyCode, { theme: "one-light" }]],
   },
 };
 
@@ -31,6 +32,8 @@ export default function ContentPage({
       <MDXRemote
         source={content}
         components={components}
+        //TODO: Consider removing ts-ignore and fix typing...
+        // @ts-ignore
         options={options}
       ></MDXRemote>
     </div>

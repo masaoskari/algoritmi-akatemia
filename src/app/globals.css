@@ -19,7 +19,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hide unnecessary mobile menu from CodeEditor component. */
+/* Hides unnecessary mobile menu from CodeEditor component. */
 .ace_mobile-menu {
   display: none !important;
+}
+
+/* Adds custom style for code blocks.*/
+pre {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: white !important;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
