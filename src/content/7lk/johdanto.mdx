@@ -4,23 +4,19 @@ slug: "7lk"
 category: "7lk"
 ---
 
-TODO:
-
-1. Kuvat koodieditorista ja siitä miten sitä käytetään.
-
-2. Ohjeet miten materiaalia käytetään.
-
-3. ...
-
 # Johdanto
 
 Mahtavaa löysit perille! Tämän materiaalin tarkoituksena on tutustuttaa sinut ohjelmoinnin pariin.
 
-Mietitkö, että miksi minun pitää tämmöistäkin opetella? Noh... minäpä kerron. Oletko koskaan miettinyt, miten puhelimesi toimii tai entä miten avaimella voi avata auton ovet koskematta autoon? No, ne toimivat erilaisten ohjelmien avulla, jotka on ohjelmoitu erilaisten ohjelmointikielien avulla. Tällä sivustolla harjoittelemme ohjelmoimaan **Python**-ohjelmointikielellä.
+Mietitkö, että miksi minun pitää tämmöistäkin opetella? Noh... minäpä kerron. Oletko koskaan miettinyt, miten puhelimesi toimii tai entä miten avaimella voi avata auton ovet koskematta autoon? No, ne toimivat erilaisten ohjelmien avulla, jotka on ohjelmoitu erilaisten ohjelmointikielien avulla. Koska erilaisia ohjelmia on kaikkialla, sen vuoksi todella monessa ammatissa tarvitaan ohjelmointitaitoja, eikä siten tiedä päädytkö sinäkin joskus ohjelmoijaksi. Vaikka et päätyisikään ohjelmoijaksi, niin ohjelmoinnin opettelu opettaa sinulle myös matematiikassa tärkeää algoritmista ajattelua ja ongelmanratkaisua ja on siis hyödyllistä monella tapaa sekä hauskaa! Näet sen vielä.☺️
+
+Aikojen saatossa erilaisia ohjelmointikieliä on ihmiset kehittäneet satoja, eli siis aika monta. Tällä sivustolla kuitenkin harjoittelemme ohjelmoimaan **Python**-ohjelmointikielellä, joka on yksi tämän hetken suosituimmista tekstipohjaisista ohjelmointikielistä ja myös suhteellisen helppo oppia.
 
 ### Mikä ihmeen ohjelmointi?
 
-Ohjelmointi on tapa kirjoittaa ohjeita tietokoneelle. Ohjelmointi on kuin kirjoittaisit ohjeita robotille, joka tekee mitä pyydät. Nämä ohjeet tulkataan erilaisten kääntäjien avulla tietokoneelle ymmärretävään muotoon, jolloin tietokone voi suorittaa näitä ohjelmia.
+Ohjelmointi on tapa kirjoittaa ohjeita tietokoneelle. Ohjelmointi on kuin kirjoittaisit ohjeita robotille, joka tekee mitä pyydät. Nämä ohjeet tulkataan erilaisten kääntäjien avulla tietokoneelle ymmärretävään muotoon, jolloin tietokone voi suorittaa näitä ohjelmia. Erilaisissa ohjelmointikielissä on erilaisia komentoja, joilla on erilaisa merkityksiä, vaikkapa Pythonissa käytetään komentoja `print {:python}`, `if {:python}` ja `for {:python}`, jotka ovat ikään kuin sanakirjan sanoja, joita käytetään ohjelmien kirjoittamiseen. Ohjelmoinnissa kaikkea ei tarvitse muistaa ulkoa, vaan voit aina tarkistaa mitä mikäkin komento tarkoittaa erilaisista materiaaleista, kuten tästä sivustosta. Tärkeintä onkin vain harjoitella erilaisten ohejelmien kirjoittamista ja ratkaista sitä kautta erilaisia ongelmia.
+
+Höpinät sikseen ja eiköhän kirjoiteta ensimmäinen ohjelma!
 
 #### Esimerkki1 - Tulostus
 
@@ -31,7 +27,7 @@ Python ohjelmointikielellä kirjoitettu ohjelma, joka tulostaa näytölle (konso
 print("Algoritmi akatemia")
 ```
 
-Tässä `print{:python}` on Pythonin komento, joka tulostaa sille annetun tekstin näytölle. Tekstin tulee olla lainausmerkkien sisällä. Mutta mikä ihmeen konsoli tai näyttö? Se on se paikka, jossa ohjelma tulostaa tekstiä. Voit kuvitella sen ikään kuin tekstiviestinä, jonka ohjelma lähettää sinulle.
+Tässä `print{:python}` on Pythonin komento, joka tulostaa sille annetun tekstin näytölle. Tekstin tulee olla lainausmerkkien sisällä. Mutta mikä ihmeen konsoli tai näyttö? Se on se paikka, jossa ohjelma tulostaa tekstiä. Voit kuvitella sen ikään kuin tekstiviestinä, jonka ohjelma lähettää sinulle, kun tietokone on sen suorittanut.
 
 Tällä sivustolla käytämme selaimeen upotettua koodieditoria, joka suorittaa ohjelmasi kun painat "Suorita" nappia ja tulostaa ohjelman tulosteen alla olevaan konsoliin.
 
@@ -39,13 +35,15 @@ Tällä sivustolla käytämme selaimeen upotettua koodieditoria, joka suorittaa 
 
 <KoodiEditori />
 
-Voit kokeilla kirjoittaa alla olevaan editoriin ohjelmia ja katsoa mitä ne tekevät. Ei hätää vaikka et ymmärtäisi vielä mitä sinun pitäisi kirjoittaa, sillä seuraavaksi opettelemme kirjoittamaan ensimmäisen ohjelman. Voit ottaa tähän mallia esimerkistä 1. Kirjoita ohjelmasi editoriin ja paina "Suorita" nappia. Tämän jälkeen ohjelmasi tuloste näkyy alla olevassa konsolissa ja tehtävä tarkistaa onko se oikein. Voit yrittää tehtävää niin monta kertaa kuin haluat.
+Voit kokeilla kirjoittaa yllä olevaan editoriin vaikka esimerkin 1 ohjelman ja katsoa miten se käyttäytyy. Ei hätää vaikka et ymmärtäisi vielä mitä sinun pitäisi kirjoittaa, sillä opit taitoja vähitellen kun siirryt materiaalissa eteenpäin.
+
+Kokeile seuraavaksi kirjoittaa ensimmäinen ohjelmasi. Voit ottaa tähän mallia esimerkistä 1. Kirjoita ohjelmasi alla olevan tehtävän editoriin ja paina "Suorita" nappia. Tämän jälkeen ohjelmasi tuloste näkyy alla olevassa konsolissa ja tehtävä tarkistaa onko se oikein. Mikäli tehtävä on oikein näet konsolin oikealla puolella peukun 👍 ja mikäli väärin niin rastin ❌. Älä hämäänny esimerkkitulostus lohkosta, sen tarkoitus on vain näyttää, miltä sinun ohjelmasi konsolin tulostuksen tulisi näyttää kun olet suorittanut ohleman. Voit yrittää tehtävää niin monta kertaa kuin haluat. Huomaa, että kirjoittaessassi ohjelmaa, sen tulee tulostaa täsmälleen sama teksti kuin tehtävässä on annettu, eli siinä tulee olla iso kirjain alussa ja lopussa huutomerkki.
 
 <Harjoitus name="Ensimmäinen ohjelma" points={10} answer="Hello world!">
 
-Kirjoita seuraavaksi ensimmäinen ohjelmasi. Aloitetaan helposta ja tehtävänäsi
-on kirjoittaa ohjelmien klassikko "Hello world" ohjelma, joka tulostaa näytölle
-`Hello world!`.
+Kirjoita ohjelmien todellinen klassikko "Hello world" ohjelma, joka tulsotaa näytölle tekstin `Hello world!{:python}`
 
-  <EsimerkkiTulostus>Hello world!</EsimerkkiTulostus>
+<EsimerkkiTulostus>Hello world!</EsimerkkiTulostus>
 </Harjoitus>
+
+Mahtavaa olet nyt kirjoittanut ensimmäisen ohjelmasi ja tutustunut siten ohelmointiin ehkä ensimmäistä kertaa! Siirry seuraavaan lukuun oppiaksesi lisää tulostamisesta konsoliin.
