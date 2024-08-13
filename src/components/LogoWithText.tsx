@@ -12,7 +12,7 @@ export const LogoWithText = () => {
         alt="Algoritmi akatemia logo"
       />
       <div className="flex flex-col">
-        <p className="text-white font-bold">Algorigmi</p>
+        <p className="text-white font-bold">Algoritmi</p>
         <p className="text-primary font-bold">Akatemia</p>
       </div>
     </Link>
