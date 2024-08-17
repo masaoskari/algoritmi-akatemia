@@ -7,10 +7,10 @@ import { ExamplePrint } from "@/components/ExamplePrint";
 import { MDXComponents } from "mdx/types";
 import { getContentBySlug, getAllContentSlugs } from "@/lib/mdxUtils";
 import rehypePrettyCode from "rehype-pretty-code";
-
+import remarkGfm from "remark-gfm";
 const options = {
   mdxOptions: {
-    remarkPlugins: [],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [[rehypePrettyCode, { theme: "one-light" }]],
   },
 };

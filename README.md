@@ -11,6 +11,7 @@ Current version can be found from [GitHub pages](https://masaoskari.github.io/al
 - exercise template ✅
 - deploy to GitHub pages ✅
 - static content
+- multiple choise questions
 - move website to use SSR
 - add DB
 - user login

@@ -1,0 +1,129 @@
+---
+title: "Muuttuja"
+slug: "7lk/muuttuja"
+category: "7lk"
+---
+
+# Luku 2 Muuttuja
+
+Ennen kuin pääsemme lähdemme tutustumaan muuttujien saloihin käydään läpi vielä koodin kommentointi, sillä tästä eteenpäin esimerkeissä alkaa näkymään kommentteja. Kommentointi onkin tärkeä osa ohjelmointia, sillä se auttaa muita ja myös itseäsi ymmärtämään mitä koodin tulisi sen kirjoittajan mukaan tehdä.
+
+## Kommentointi
+
+Pythonissa kommentti aloitetaan #-merkillä, näitä kommentti rivejä ei suoriteta ohjelman toimesta.
+
+Esimerkiksi ohjelma:
+
+```python
+# Tämä on kommentti
+print("Tämä tulostuu näytölle")
+```
+
+Tulostaa seuraavanlaisesti:
+
+<EsimerkkiTulostus>Tämä tulostuu näytölle</EsimerkkiTulostus>
+
+Voit kokeilla kommentointia alla olevassa koodieditorissa.
+
+### Koodieditori
+
+<KoodiEditori />
+
+## Muuttujat
+
+Noniin vihdoin muuttujien kimppuun. Muuttuja on nimensä mukaisesti arvo, joka voi muuttua. Muuttujan avulla voit tallentaa tietoa ja käyttää sitä myöhemmin ohjelmassa. Muuttujan luominen on helppoa, annat vain muuttujalle nimen ja sille arvon.
+
+Esimerkiksi:
+
+```python
+# Luodaan muuttuja x ja annetaan sille arvoksi 5
+x = 5
+# Tulostetaan muuttujan x arvo
+print(x)
+```
+
+Tulostaa seuraavanlaisesti:
+
+<EsimerkkiTulostus>5</EsimerkkiTulostus>
+
+Muuttujan arvoa voi myös muuttaa ohjelman aikana. Esimerkiksi:
+
+```python
+# Luodaan muuttuja x ja annetaan sille arvoksi 5
+x = 5
+# Lisätään muuttujan x arvoon 1
+x = x + 1
+# Tulostetaan muuttujan x arvo
+print(x)
+```
+
+<EsimerkkiTulostus>6</EsimerkkiTulostus>
+
+Voit myös esimerkiksi laskea muuttujien arvoja yhteen sekä tehdä niille erilaisia laskutoimituksia. Esimerkiksi:
+
+```python
+# Luodaan muuttuja x ja annetaan sille arvoksi 5
+x = 5
+# Luodaan muuttuja y ja annetaan sille arvoksi 3
+y = 3
+# Lisätään muuttujien x ja y arvot yhteen ja tulostetaan tulos
+print(x + y)
+```
+
+Tulostaa seuraavanlaisesti:
+
+<EsimerkkiTulostus>8</EsimerkkiTulostus>
+
+<Harjoitus 
+    name="Laskentaa muuttujilla" 
+    points={10}
+    answer="-12">
+
+Merkitse muuttujien arvoiksi `x = 23`, `y = 7`ja `z = 42`. Laske lasku `x + y - z` muuttujilla ja tulosta tulos näytölle.
+
+</Harjoitus>
+
+Muuttujilla voit siis tehdä monenlaisia laskutoimituksia ja käyttää niitä ohjelmassasi.
+Voit tallentaa muuttujiin myös tekstiä, jota kutsutaan ohjelmoinnissa _merkkijonoiksi_.
+
+Kokeile esimerkiksi seuraavaa:
+
+```python
+x = "Algoritmi"
+y = "akatemia"
+print(x + y)
+```
+
+### Koodieditori
+
+<KoodiEditori />
+
+Huomasitko miten muuttujat x ja y yhdistettiin toisiinsa? Muuttujat x ja y olivat merkkijonoja, joten ne yhdistettiin toisiinsa yhdeksi merkkijonoksi.
+
+Miten saisit sanojen "Algoritmi" ja "akatemia" tulostumaan erilleen? Kokeile!\*
+
+## Muuttujatyypit
+
+Muuttujilla ohjelmoinnissa on erilaisia tyyppejä, kuten kokonaislukuja (int), desimaalilukuja (float) ja merkkijonoja (str), jotka kertovat tietokoneelle minkä tyyppistä tietoa muuttuja sisältää. Pythonissa ei tarvitse erikseen määrittää muuttujan tyyppiä, vaan Python osaa päätellä sen itse. Et voi kuitenkaan yhdistää eri tyyppisiä muuttujia keskenään.
+
+Esimerkiksi:
+
+```python
+luku1 = "viisi"
+luku2 = 5
+print(luku1 + luku2)
+```
+
+Aiheuttaa virheen:
+
+<EsimerkkiTulostus>
+Paljon virheilmoituksia...
+...
+...
+TypeError: can only concatenate str (not "int") to str
+</EsimerkkiTulostus>
+
+koska yrität yhdistää merkkijonoa ja kokonaislukua keskenään, mikä ei ole sallittua.
+Voit kokeilla tätä yllä olevassa koodieditorissa.
+
+\*Vinkki: Esimerkiksi näin `print(x + " " + y){:python}`

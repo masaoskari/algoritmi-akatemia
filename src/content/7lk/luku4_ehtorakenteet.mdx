@@ -1,0 +1,154 @@
+---
+title: "Ehtorakenteet"
+slug: "7lk/ehtorakenteet"
+category: "7lk"
+---
+
+# Luku4 Ehtorakenteet
+
+## Vertailuoperaattorit
+
+Ennen kuin aloitamme ehtorakenteista, niin käydään läpi muuttujien vertailuoperaattorit. Vertailuoperaattorit ovat merkkejä, joita käytetään vertailemaan kahta arvoa keskenään. Vertailuoperaattorit palauttavat totuusarvon `True` tai `False` sen mukaan, onko vertailu tosi vai epätosi.
+
+Pythonissa käytettävät vertailuoperaattorit ovat seuraavat:
+
+| Operaattori | Kuvaus                | Esimerkki       | Tulostus |
+|:-----------:|:---------------------:|:---------------:|:--------:|
+| `==`        | Yhtäsuuruus           | `5 == 5`        | `True{:python}`   |
+| `!=`        | Eriarvoisuus          | `5 != 3`        | `True{:python}`   |
+| `>`         | Suurempi kuin         | `5 > 3`         | `True{:python}`   |
+| `<`         | Pienempi kuin         | `3 < 5`         | `True{:python}`   |
+| `>=`        | Suurempi tai yhtäsuuri| `5 >= 5`        | `True{:python}`   |
+| `<=`        | Pienempi tai yhtäsuuri| `3 <= 5`        | `True{:python}`   |
+
+
+Eli esimerkiksi `<`-operaattori palauttaa `True{:python}`, jos vasemmanpuoleinen arvo on pienempi kuin oikeanpuoleinen arvo. Muuten se palauttaa `False{:python}`.
+
+Testataan tätä alla olevalla ohjelmalla:
+
+```python
+# Määritellään muuttujat
+a = 5
+b = 3
+print(a < b)
+```
+Tulostaa seuraavanlaisesti:
+
+<EsimerkkiTulostus>
+False
+</EsimerkkiTulostus>
+
+<Harjoitus 
+    name="Yksinkertainen vertailu"
+    points={10}
+    answer="True"
+    >
+Tee ohjelma, joka käyttää jotain vertailuoperaattoria ja tulostaa näytölle `True`.
+
+</Harjoitus>
+
+## Ehtorakenteet
+
+Ehtorakenteet ovat ohjelmoinnin perus komentoja, joiden avulla voidaan ohjata ohjelman suoritusjärjestystä. Pythonissa käytetään `if{:python}`, `elif{:python}` ja `else{:python}`-komentoja.
+
+Tarkastellaan seuraavaksi ohjelmaa:
+
+```python
+# Kysytään käyttäjältä ikä
+ika = int(input("Kuinka vanha olet?"))
+
+# Tarkistetaan onko käyttäjä täysi-ikäinen
+if ika >= 18:
+    print("Olet täysi-ikäinen.")
+```
+
+Ohjelma kysyy käyttäjältä ikää ja tarkistaa onko käyttäjä täysi-ikäinen. Jos käyttäjä on täysi-ikäinen, niin ohjelma tulostaa `Olet täysi-ikäinen.` Muussa tapauksessa ohjelma ei tulosta mitään. Huomasitko miten muodostimme ehdon? Käytimme `if{:python}`-komentoa ja vertailuoperaattoria `>=` tutkimaan onko käyttäjän ikä suurempi tai yhtäsuuri kuin 18. Tässä on tärkeä huomata, että ehto tulee aina `if{:python}`-komenton jälkeen ja ehto tulee sulkea kaksoispisteillä `:`.
+Se mitä ehdon jälkeen tulee suorittaa, tulee sisentää tabulaattorilla. 
+
+Lisätään vielä edelliseen ohjelmaan tulostus, jos käyttäjä ei ole täysi-ikäinen:
+
+```python
+# Kysytään käyttäjältä ikä
+ika = int(input("Kuinka vanha olet?"))
+
+# Tarkistetaan onko käyttäjä täysi-ikäinen
+if ika >= 18:
+    print("Olet täysi-ikäinen.")
+else:
+    print("Olet alaikäinen.")
+```
+
+Saimme ohjelman tulostamaan `Olet alaikäinen.`, jos käyttäjä ei ole täysi-ikäinen. Tämä tapahtuu `else{:python}`-komennolla, joka suoritetaan, jos `if{:python}`-ehdon tulos on `False`. Voit ajatella tämän olevan komento, joka suoritetaan, jos mikään muu ehto ei ole tosi.
+
+Lisätään vielä ohjelmaan ehto, joka tutkii onko käyttäjä alle 7-vuotias:
+
+```python
+# Kysytään käyttäjältä ikä
+ika = int(input("Kuinka vanha olet?"))
+
+# Tarkistetaan onko käyttäjä alle 7-vuotias
+if ika < 7:
+    print("Olet alle 7-vuotias.")
+elif 7 <= ika < 18:
+    print("Olet koululainen.")
+else:
+    print("Olet täysi-ikäinen.")
+```
+
+Tässä ohjelmassa käytimme `elif{:python}`-komentoa, jota voidaan käyttää `if{:python}`-komennon jälkeen tutkimaan uutta ehtoa, joka suoritetaan kun edellinen `if{:python}`-ehdon tulos on `False` ja `elif{:python}`-ehdon tulos on `True`. Voit käyttää `elif{:python}`-komennon jälkeen useita `elif{:python}`-komentoja, jos haluat tutkia useampia ehtoja. Huomaa kuitenkin, että `if{:python}` komento on aina ensimmäinen ja niitä voi olla vain yksi. Vastaavasti `else{:python}`-komennon tulee olla aina viimeisenä ja se suoritetaan, jos mikään muu ehto ei ole tosi.
+
+Tehdään vielä esimerkiksi ohjelma, joka tarkistaa käyttäjän iän ja tulostaa sen mukaisesti onko käyttäjä lapsi (0 - 12 v), nuori (13 - 17 v), nuori aikuinen (18 - 22 v) vai aikuinen (23 v ->):
+
+```python
+# Kysytään käyttäjältä ikä
+ika = int(input("Kuinka vanha olet?"))
+
+# Tarkistetaan onko käyttäjä lapsi
+if ika >= 0 and ika <= 12:
+    print("Olet lapsi.")
+elif ika >= 13 and ika <= 17:
+    print("Olet nuori.")
+elif ika >= 18 and ika <= 22:
+    print("Olet nuori aikuinen.")
+else:
+    print("Olet aikuinen.")
+```
+Huomasitko käytimme tässä `and{:python}`-operaattoria, joka tarkoittaa, että molempien ehtojen tulee olla tosia, jotta koko ehto on tosi. Voit käyttää myös `or{:python}`-operaattoria, joka tarkoittaa, että jomman kumman ehtoista tulee olla tosi, jotta koko ehto on tosi.
+
+Esimerkiksi:
+
+```python
+print(5 < 10 and 10 > 5)
+```
+Tulostaa seuraavanlaisesti:
+
+<EsimerkkiTulostus>
+
+True
+
+</EsimerkkiTulostus>
+
+Sillä molemmat ehdot ovat tosia (5 on pienempi kuin 10 ja 10 on suurempi kuin 5).
+
+```python
+print(5 < 10 or 10 < 5)
+```
+Tulostaa seuraavanlaisesti:
+
+<EsimerkkiTulostus>
+
+True
+
+</EsimerkkiTulostus>
+
+Sillä toinen ehto on tosi (5 on pienempi kuin 10).
+
+<Harjoitus 
+    name="Ensimmäinen ehto tehtävä"
+    points={10}
+    answer=""
+    >
+
+Tee ohjelma, joka kysyy käyttäjältä luvun ja tulostaa näytölle `True`, jos luku on suurempi kuin 10 ja `False`, jos luku on pienempi tai yhtäsuuri kuin 10.
+
+</Harjoitus>

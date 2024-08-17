@@ -27,7 +27,7 @@ export const CodeEditor = ({
 
   const runCode = async () => {
     const output = await runPythonCode(userInput);
-    setOutput(output);
+    setOutput(output.replace(/\r/g, "").trim());
     if (onCodeExecution) onCodeExecution(output);
   };
 
@@ -57,7 +57,7 @@ export const CodeEditor = ({
           <p className="font-semibold px-4">Konsoli</p>
           {answer && output ? (
             <p className="font-semibold px-4">
-              {output && answer && output.trim() === answer.trim()
+              {output && answer && output === answer.replace(/\r/g, "").trim()
                 ? "👍 Oikein"
                 : "❌ Väärin"}
             </p>

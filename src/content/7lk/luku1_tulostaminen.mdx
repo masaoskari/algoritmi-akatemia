@@ -1,0 +1,120 @@
+---
+title: "Tulostaminen"
+slug: "7lk/tulostaminen"
+category: "7lk"
+---
+
+# Luku 1 Tulostaminen
+
+Johdannossa opit, että `print{:python}` komento tulostaa tekstiä näytölle. Tässä luvussa tutustumme tarkemmin tulostamiseen ja siihen, miten voimme muokata tulostettavaa tekstiä.
+
+## Usean rivin tulostaminen
+
+Pythonilla voit tulostaa usean rivin tekstiä käyttämällä `print{:python}` komentoa useamman kerran. Esimerkiksi:
+
+```python
+print("Rivi 1")
+print("Rivi 2")
+```
+
+Tulostaa seuraavanlaisesti:
+
+<EsimerkkiTulostus>Rivi 1 Rivi 2</EsimerkkiTulostus>
+
+<Harjoitus 
+    name="Monen rivin tulostaminen" 
+    points={10} 
+    answer="Algoritmi
+            akatemia
+            opettaa">
+Kirjoita ohjelma joka tulostaa seuraavat kolme riviä esimerkkitulostuksen mukaisesti näytölle
+
+<EsimerkkiTulostus>Algoritmi akatemia opettaa</EsimerkkiTulostus>
+
+</Harjoitus>
+
+<Harjoitus 
+    name="Monimutkainen tulostaminen" 
+    points={10} 
+    answer="####
+            #     #
+            #     #
+            ####">
+
+Kirjoita ohjelma joka tulostaa näytölle kuvion. Huomaa! Voit joutua asettamaan 2 ja 3 rivin väliin enemmän välilyöntejä kuin aluksi voi vaikuttaa.
+
+<EsimerkkiTulostus>
+\#\#\#\#
+\#     \#
+\#     \#
+\#\#\#\#
+</EsimerkkiTulostus>
+</Harjoitus>
+
+## Matemaattiset laskut
+
+Pythonissa voit käyttää erilaisia matemaattisia symboleja tulostamaan matemaattisia laskuja. Esimerkiksi:
+
+```python
+print(2 + 2)
+```
+
+Tulostaa seuraavanlaisesti:
+
+<EsimerkkiTulostus>4</EsimerkkiTulostus>
+
+Muita matemaattisia operaattoreita ovat:
+
+| Operaattori |      Kuvaus      |      Esimerkki       | Tulostus |
+| :---------: | :--------------: | :------------------: | :------: |
+|     `+`     |   Yhteenlasku    |    `print(2 + 3)`    |   `5`    |
+|     `-`     |  Vähennyslasku   |    `print(5 - 2)`    |   `3`    |
+|     `*`     |    Kertolasku    |    `print(3 * 4)`    |   `12`   |
+|     `/`     |    Jakolasku     |   `print(10 / 2)`    |  `5.0`   |
+|    `//`     | Kokonaislukujako |   `print(10 // 3)`   |   `3`    |
+|     `%`     |   Jakojäännös    |   `print(10 % 3)`    |   `1`    |
+|    `**`     |     Potenssi     |   `print(2 ** 3)`    |   `8`    |
+|    `()`     |     Sulkeet      | `print((2 + 3) * 4)` |   `20`   |
+
+Kokeile seuraavaksi tulostaa matemaattisia laskuja ja kokeile mitä tapahtuu kun käytät eri operaattoreita.
+
+### Koodieditori
+
+<KoodiEditori />
+
+Kokeilitko mitä tapahtuu jos et kirjoita `print{:python}` komentoa laskun ympärille. Kokeile esimerkiksi kirjoittaa:
+
+```python
+2 + 2
+```
+
+Huomasitko? Ohjelma ei tulostanut mitään. Tämä johtuu siitä, että ohjelma suorittaa laskun, mutta ei tulosta sitä näytölle, koska et ole komentanut Pythonia tulostamaan laskun tulosta `print{:python}` komennolla.
+
+<Harjoitus name="Matikan laskeminen" points={10} answer="15">
+
+Kirjoita ohjelma joka laskee laskun `(2 + 3) * 4 - 5` tuloksen ja tulostaa sen näytölle.
+
+</Harjoitus>
+
+## Tulostuksen muotoilu
+
+Voit käyttää Pythonissa `+` ja `,` operaattoreita yhdistämään eri muuttujia ja tekstejä tulostuksessa. Esimerkiksi:
+
+```python
+print("Algoritmi" + "Akatemia")
+print("Algoritmi", "Akatemia")
+```
+
+Tulostaa seuraavanlaisesti:
+
+<EsimerkkiTulostus>AlgoritmiAkatemia Algoritmi Akatemia</EsimerkkiTulostus>
+
+Eli `+` operaattori yhdistää tekstit toisiinsa ja `,` operaattori erottaa tekstit toisistaan välilyönnillä.
+
+<Harjoitus name="Tulostuksen muotoilu" points={10} answer="murtoluku">
+
+Kirjoita ohjelma joka tulostaa sanat `murto` ja `luku` yhteen ilman välilyöntiä käyttämällä sopivaa operaattoria.
+
+</Harjoitus>
+
+Ethän huijannut edellisessä tehtävässä? Hmmmm ... joka tapauksessa vaikuttaa siltä, että tulostaminen on sinulla hallinnassa! Siirry seuraavaan lukuun oppiaksesi lisää ohjelmoinnista.

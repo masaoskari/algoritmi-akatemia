@@ -1,0 +1,127 @@
+---
+title: "Syöte"
+slug: "7lk/syote"
+category: "7lk"
+---
+
+# Luku3 Käyttäjän syöte
+
+## Syöte
+Kun teet tietokoneella erilaisia asioita vaikkapa selaat internetiä tai pelaat pelejä, niin käytät tietokoneen näppäimistöä ja hiirtä antamaan tietokoneelle syötteitä. 
+
+Käyttäjän syöte onkin tärkeä osa ohjelmointia, sillä se mahdollistaa ohjelman vuorovaikutuksen käyttäjän kanssa. Käyttäjän syöte voi olla erilaisia näppäimistöltä annettuja arvoja, tekstiä tai numeroita. Syötettä voidaan käyttää esimerkiksi laskemaan käyttäjän antamia arvoja tai tulostamaan käyttäjän antamaa tekstiä.
+
+Pythonissa käyttäjän syöte voidaan ottaa käyttöön `input(){:python}`-komennolla. `input(){:python}`- komento ottaa käyttäjän syötteen vastaan ja palauttaa sen merkkijonona. Esimerkiksi:
+
+```python
+# Otetaan käyttäjän syöte vastaan ja tallennetaan se muuttujaan 
+# sivusto
+sivusto = input("Mikä on paras sivusto opettamaan ohjelmointia?")
+# Tulostetaan käyttäjän antama syöte
+print("Paras sivusto on:", sivusto)
+```
+Voit kokeilla yllä olevaa koodia alla olevassa koodieditorissa.
+
+### Koodieditori
+<KoodiEditori />
+
+Kun suoritat yllä olevan koodin, niin ohjelma kysyy sinulta mikä on paras sivusto opettamaan ohjelmointia alla olevan kuvan mukaisesti.
+
+![Käyttäjän syöte](/algoritmi-akatemia/images/7lk/syote_esimerkki.png)
+
+Voit kirjoittaa syöte kenttään haluamasi vastauksen ja painaa ok. Tämän jälkeen ohjelma tulostaa sinulle vastauksen konsoliin kertomasi syötteen mukaisesti, kuten alla olevassa kuvassa.
+
+<EsimerkkiTulostus>
+Paras sivusto on: Algoritmi Akatemia
+</ EsimerkkiTulostus>
+
+Kun käyttäjän syötettä kysytään ohjelmassa `input(){:python}`-komennolla, niin syöte luetaan merkkijonona. Jos haluat käyttäjän syötteen olevan esimerkiksi kokonaisluku, niin sinun tulee muuttaa syöte kokonaisluvuksi `int(){:python}`-komennolla. Esimerkiksi:
+
+```python
+# Otetaan käyttäjän syöte vastaan ja muutetaan se kokonaisluvuksi
+ika = int(input("Kuinka vanha olet?"))
+# Tulostetaan käyttäjän antama syöte
+print("Olet", ika, "vuotta vanha.")
+```
+Tulostaa seuraavanlaisesti (riippuen antamastasi syötteestä):
+
+<EsimerkkiTulostus>
+
+Olet 12 vuotta vanha.
+
+</EsimerkkiTulostus>
+
+Kokeile seuraavaksi alla olevassa koodieditorissa seuraavia ohjelmia.
+
+````python
+# Ohjelma1
+numero1 = input("Anna ensimmäinen numero:")
+numero2 = input("Anna toinen numero:")
+print("Numeroiden summa on:", numero1 + numero2)
+````
+
+````python
+# Ohjelma2
+numero1 = int(input("Anna ensimmäinen numero:"))
+numero2 = int(input("Anna toinen numero:"))
+print("Numeroiden summa on:", numero1 + numero2)
+````
+
+### KoodiEditori
+
+<KoodiEditori />
+
+Huomasitko mitä tapahtui? Osaatko perustella miksi näin kävi?
+
+## Muita tyyppimuunnoksia
+
+Käyttäjän syötettä voidaan muuttaa myös muiksi tyyppimuodoiksi, kuten desimaaliluvuksi `float(){:python}`-komennolla. Esimerkiksi:
+
+```python
+# Otetaan käyttäjän syöte vastaan ja muutetaan se desimaaliluvuksi
+pituus = float(input("Anna pituutesi metreinä:"))
+# Tulostetaan käyttäjän antama syöte
+print("Olet", pituus, "metriä pitkä.")
+```
+Tulostaa seuraavanlaisesti (riippuen antamastasi syötteestä):
+
+<EsimerkkiTulostus>
+
+Olet 1.75 metriä pitkä.
+
+</EsimerkkiTulostus>
+
+Mitä jos haluaisit pyöristää desimaaliluvun yhden desimaalin tarkkuudella? Tämä onnistuu `round(){:python}`-komennolla. Esimerkki:
+
+```python
+# Otetaan käyttäjän syöte vastaan ja muutetaan se desimaaliluvuksi
+pituus = float(input("Anna pituutesi metreinä:"))
+# Pyöristetään pituus yhden desimaalin tarkkuudella
+pyoristetty_pituus = round(pituus, 1)
+# Tulostetaan käyttäjän antama syöte
+print("Olet", pyoristetty_pituus, "metriä pitkä.")
+```
+
+Tulostaa seuraavanlaisesti (riippuen antamastasi syötteestä):
+<EsimerkkiTulostus>
+
+Olet 1.8 metriä pitkä.
+
+</EsimerkkiTulostus>
+
+Mahtavaa! Nyt voit tehdä käyttäjän kanssa vuorovaikutteisia ohjelmia.
+
+## Tehtäviä
+
+Automaattisesti tarkistavat tehtävät eivät ole vielä käytössä syötettä pyytäessä käyttäjältä. Voit kuitenkin kokeilla alla olevia tehtäviä koodieditorissa ja katsoa itse tulostuuko vastauksesi oikein.
+
+1. Tee ohjelma, joka kysyy käyttäjältä nimen ja tulostaa sen konsoliin.
+
+2. Tee ohjelma, joka kysyy käyttäjältä pituuden metreinä ja tulostaa sen senttimetreinä konsoliin.
+
+3. Tee ohjelma, joka kysyy käyttäjältä suorakulmion leveyden ja korkeuden ja laskee niiden perusteella suorakulmion pinta-alan ja tulostaa sen konsoliin.
+
+<KoodiEditori />
+
+
+

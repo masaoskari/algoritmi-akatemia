@@ -20,7 +20,7 @@ export const Excercise = ({
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
 
   const handleCodeExecutionOutput = (output: string) => {
-    setIsCorrect(output.trim() === answer.trim());
+    setIsCorrect(output === answer.replace(/\r/g, "").trim());
   };
 
   return (
