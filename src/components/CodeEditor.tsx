@@ -1,12 +1,14 @@
 "use client";
 import usePyodide from "@/hooks/usePyodide";
 import { useState } from "react";
+import { checkAnswer } from "@/lib/exerciseUtils";
 import AceEditor from "react-ace-builds";
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-chrome";
 
 type CodeEditorProps = {
   onCodeExecution?: (output: string) => void;
+  input?: string[];
   answer?: string | undefined;
   height?: number; // Height of the editor in pixels
 };
@@ -14,6 +16,7 @@ type CodeEditorProps = {
 export const CodeEditor = ({
   onCodeExecution,
   height = 300,
+  input = [],
   answer = undefined,
 }: CodeEditorProps) => {
   const { runPythonCode } = usePyodide();
@@ -22,12 +25,11 @@ export const CodeEditor = ({
 
   const onCodeChange = (value: string) => {
     setUserInput(value);
-    console.log(value);
   };
 
   const runCode = async () => {
-    const output = await runPythonCode(userInput);
-    setOutput(output.replace(/\r/g, "").trim());
+    const output = await runPythonCode(userInput, input);
+    setOutput(output);
     if (onCodeExecution) onCodeExecution(output);
   };
 
@@ -57,7 +59,7 @@ export const CodeEditor = ({
           <p className="font-semibold px-4">Konsoli</p>
           {answer && output ? (
             <p className="font-semibold px-4">
-              {output && answer && output === answer.replace(/\r/g, "").trim()
+              {output && answer && checkAnswer(output, answer)
                 ? "👍 Oikein"
                 : "❌ Väärin"}
             </p>

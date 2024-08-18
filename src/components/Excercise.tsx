@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { CodeEditor } from "./CodeEditor";
+import { checkAnswer } from "@/lib/exerciseUtils";
 
 type ExcerciseProps = {
   editorHeight?: number;
@@ -8,6 +9,7 @@ type ExcerciseProps = {
   children: React.ReactNode;
   points: number;
   answer: string;
+  input?: string[];
 };
 
 export const Excercise = ({
@@ -16,11 +18,12 @@ export const Excercise = ({
   children,
   points,
   answer,
+  input,
 }: ExcerciseProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
 
   const handleCodeExecutionOutput = (output: string) => {
-    setIsCorrect(output === answer.replace(/\r/g, "").trim());
+    setIsCorrect(checkAnswer(output, answer));
   };
 
   return (
@@ -41,6 +44,7 @@ export const Excercise = ({
         <CodeEditor
           height={editorHeight}
           answer={answer}
+          input={input}
           onCodeExecution={handleCodeExecutionOutput}
         />
       </div>
