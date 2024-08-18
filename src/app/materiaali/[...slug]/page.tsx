@@ -2,6 +2,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import React from "react";
 import "@/app/globals.css";
 import { Excercise } from "@/components/Excercise";
+import { MultipleChoiceExercise } from "@/components/MultipleChoiceExercise";
 import { CodeEditor } from "@/components/CodeEditor";
 import { ExamplePrint } from "@/components/ExamplePrint";
 import { MDXComponents } from "mdx/types";
@@ -19,6 +20,7 @@ const components: MDXComponents = {
   Harjoitus: Excercise,
   KoodiEditori: CodeEditor,
   EsimerkkiTulostus: ExamplePrint,
+  MonivalintaHarjoitus: MultipleChoiceExercise,
 };
 
 export default function ContentPage({
