@@ -9,10 +9,13 @@ import { MDXComponents } from "mdx/types";
 import { getContentBySlug, getAllContentSlugs } from "@/lib/mdxUtils";
 import rehypePrettyCode from "rehype-pretty-code";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+
 const options = {
   mdxOptions: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [[rehypePrettyCode, { theme: "one-light" }]],
+    remarkPlugins: [remarkGfm, remarkMath],
+    rehypePlugins: [[rehypePrettyCode, { theme: "one-light" }], rehypeKatex],
   },
 };
 
