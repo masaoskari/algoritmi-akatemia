@@ -9,6 +9,7 @@ type ExcerciseProps = {
   children: React.ReactNode;
   points: number;
   answer: string;
+  level: number;
   input?: string[];
 };
 
@@ -18,6 +19,7 @@ export const Excercise = ({
   children,
   points,
   answer,
+  level,
   input,
 }: ExcerciseProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
@@ -31,7 +33,9 @@ export const Excercise = ({
       <h2 className="mt-4">Harjoitus</h2>
       <div className="rounded shadow-lg">
         <div className="rounded-tl-md rounded-tr-md bg-blue-600 flex justify-between items-center p-4">
-          <p className="text-white font-bold">{name}</p>
+          <p className="text-white font-bold">
+            {"⭐".repeat(level)} {name}
+          </p>
           {/* TODO: Points needs to be store and get from server side. */}
           <p className="text-white font-bold">{`Pisteet: ${
             isCorrect ? points : "0"
