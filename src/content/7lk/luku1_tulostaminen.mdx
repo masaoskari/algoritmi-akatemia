@@ -6,7 +6,72 @@ category: "7lk"
 
 # Luku 1 Tulostaminen
 
-Johdannossa opit, että `print{:python}` komento tulostaa tekstiä näytölle. Tässä luvussa tutustumme tarkemmin tulostamiseen ja siihen, miten voimme muokata tulostettavaa tekstiä.
+Johdannossa opit, että `print{:python}` komento tulostaa tekstiä näytölle. Tässä luvussa tutustumme tarkemmin tulostamiseen ja siihen, miten voimme muokata tulostettavaa tekstiä. Harjoittele vielä yksinkertaista tulostamista seuraavan tehtävän avulla.
+
+<Harjoitus
+    name="Rivin tulostaminen" 
+    points={10} 
+    answer="Osaan ohjelmoida!"         
+    level={1}>
+
+Kirjoita ohjelma, joka tulostaa seuraavan lauseen näytölle: `Osaan ohjelmoida!`
+
+<EsimerkkiTulostus>
+
+Osaan ohjelmoida!
+
+</EsimerkkiTulostus>
+
+</Harjoitus>
+
+## Virheet ohjelmoitaessa
+
+Ohjelmoitaessa voi tulla virheitä, jotka estävät ohjelman suorittamisen, koska tietokone ei ymmärrä mitä sen pitäisi tehdä. Virheet voivat johtua esimerkiksi kirjoitusvirheistä, väärästä komennosta tai puuttuvasta osasta ohjelmaa. Esimerkiksi seuraava ohjelma ei toimi, koska `print{:python}` komennon sisällä tulostettava teksti ei ole lainausmerkkien sisällä.
+
+```python
+print(Hei maailma!)
+```
+
+Kun yrität suorittaa ohjelmaa saat virheilmotuksen:
+
+<EsimerkkiTulostus>
+Paljon muita virheilmoituksia...
+.
+.
+.
+print(Hei maailma!)
+       ^
+SyntaxError: invalid syntax
+
+</ EsimerkkiTulostus>
+
+Tulostuksesta huomataan, että kyseessä on syntaksi virhe, eli ohjelma ei ole kirjoitettu oikein. Tässä tapauksessa puuttuvat lainausmerkit.
+
+Ohjelmointivirheitä ei kannata pelätä, sillä niitä tulee jokaiselle ohjelmoijalle. Virheistä oppii ja niitä korjaamalla oppii ohjelmoimaan paremmin.
+
+**Tiesitkö**? Ohjelmoijat kutsuvat virheitä usein myös _bugeiksi_ 🪲. Tämä johtuu siitä, että virheiden korjaaminen on kuin metsästäisi ötököitä, jotka ovat piiloutuneet ohjelman sisään.
+
+<Harjoitus
+    name="Bugien metsästys" 
+    points={10} 
+    answer="Bugeja pitää oppia metsästämään!"         
+    level={1}>
+
+Korjaa seuraava ohjelma tulostamaan esimerkkitulostuksen mukainen lause.
+
+```python
+print"bugeja pitää oppia metsästämään)
+```
+
+<EsimerkkiTulostus>
+
+Bugeja pitää oppia metsästämään!
+
+</EsimerkkiTulostus>
+
+</ Harjoitus>
+
+Kuinka monta löysit? Kolme? Hyvä! Jatka seuraavaan lukuun oppiaksesi lisää tulostamisesta.
 
 ## Usean rivin tulostaminen
 
@@ -21,7 +86,7 @@ Tulostaa seuraavanlaisesti:
 
 <EsimerkkiTulostus>
 
-Rivi 1 
+Rivi 1
 Rivi 2
 
 </EsimerkkiTulostus>
@@ -31,7 +96,8 @@ Rivi 2
     points={10} 
     answer="Algoritmi
             akatemia
-            opettaa">
+            opettaa"
+    level={1}>
 Kirjoita ohjelma joka tulostaa seuraavat kolme riviä esimerkkitulostuksen mukaisesti näytölle
 
 <EsimerkkiTulostus>
@@ -50,7 +116,8 @@ opettaa
     answer="####
             #     #
             #     #
-            ####">
+            ####"
+    level={2}>
 
 Kirjoita ohjelma joka tulostaa näytölle kuvion. Huomaa! Voit joutua asettamaan 2 ja 3 rivin väliin enemmän välilyöntejä kuin aluksi voi vaikuttaa.
 
@@ -74,7 +141,23 @@ Tulostaa seuraavanlaisesti:
 
 <EsimerkkiTulostus>4</EsimerkkiTulostus>
 
-Muita matemaattisia operaattoreita ovat:
+Tässä siis Python laskee laskun $2 + 2$ ja tulostaa tuloksen $4$ näytölle `print{:python}`-komennon avulla.
+
+Entä, arvaatko mitä seuraava ohjelma tulostaa?
+
+```python
+print("2 + 2")
+```
+
+<EsimerkkiTulostus>
+
+2 + 2
+
+</EsimerkkiTulostus>
+
+Täsmälleen! Se tulostaa `2 + 2`, koska teksti on lainausmerkkien sisällä ja Python ajattelee sen merkkijonona ja tulostaa sen siten sellaisenaan.
+
+$+$-operaation lisäksi muita matemaattisia operaattoreita ovat:
 
 | Operaattori |      Kuvaus      |      Esimerkki       | Tulostus |
 | :---------: | :--------------: | :------------------: | :------: |
@@ -101,9 +184,87 @@ Kokeilitko mitä tapahtuu jos et kirjoita `print{:python}` komentoa laskun ympä
 
 Huomasitko? Ohjelma ei tulostanut mitään. Tämä johtuu siitä, että ohjelma suorittaa laskun, mutta ei tulosta sitä näytölle, koska et ole komentanut Pythonia tulostamaan laskun tulosta `print{:python}` komennolla.
 
-<Harjoitus name="Matikan laskeminen" points={10} answer="15">
+## Esimerkkejä
 
-Kirjoita ohjelma joka laskee laskun `(2 + 3) * 4 - 5` tuloksen ja tulostaa sen näytölle.
+Tehdään vielä muutama esimerkki matemaattisista laskuista, jonka jälkeen siirrymme harjoituksiin. Keskitytään erityisesti jakolasku operaattoreihin, joita on kolme erilaista.
+
+### Esimerkki 1
+
+- Operaattori $/$ jakaa kaksi lukua ja palauttaa tuloksen _desimaalilukuna_.
+- Operaattori $//$ jakaa kaksi lukua ja palauttaa tuloksen _kokonaislukuna_.
+- Operaattori $\%$ jakaa kaksi lukua ja palauttaa _jakojäännöksen_.
+
+Eli jos jaetaan luku $3$ luvulla $2$ saadaan seuraavat tulokset:
+
+```python
+print(3 / 2)
+print(3 // 2)
+print(3 % 2)
+```
+
+<EsimerkkiTulostus>
+
+1.5
+1
+1
+
+</EsimerkkiTulostus>
+
+**Selitys**:
+
+- $3 / 2$ jakaa luvun $3$ luvulla $2$ ja palauttaa tuloksen $1.5$ desimaalilukuna, koska käytettiin $/$-operaattoria.
+- $3 // 2$ jakaa luvun $3$ luvulla $2$ ja palauttaa tuloksen $1$ kokonaislukuna, koska käytettiin $//$-operaattoria, mikä pyöristää vastauksen alaspäin lähimpään kokonaislukuun.
+- $3 % 2$ jakaa luvun $3$ luvulla $2$ ja palauttaa tuloksen jakojäännöksen, koska $3 : 2 = 1 jää 1$.
+
+### Esimerkki 2
+
+Lasketaan seuraavaksi potenssilasku $2^3$:
+
+```python
+print(2 ** 3)
+```
+
+<EsimerkkiTulostus>8</EsimerkkiTulostus>
+
+Tässä lasketaan siis $2^3 = 2 * 2 * 2 = 8$ ja tulostetaan tulos.
+
+### Esimerkki 3
+
+Lasketaan seuraavaksi hieman monimutkaisempi lasku $((10 * 5) + (30 / 2) - (6 * 3))$ ja tulostetaan tulos hieman monimutkaisemmin:
+
+```python
+print("Tulos: ", (10 * 5) + (30 / 2) - (6 * 3))
+```
+
+<EsimerkkiTulostus>
+
+Tulos: 47.0
+
+</EsimerkkiTulostus>
+
+Helppoa, eikö totta? Tarvitsee siis vain kirjoittaa lasku oikein Pythonille ja antaa sen tehdä raskas laskenta.
+
+Käytimme myös `print{:python}`-komentoa tulostamaan tekstin ja laskun tuloksen samalla rivillä. Näin voidaan tehdä kun nämä eri osat erotetaan pilkulla `,` `print{:python}` komennon sisällä.
+
+Kokeile seuraavaksi harjoituksia ja testaa osaamistasi!
+
+**Extra**: Ihmettelitkö miksi tulostus on $47.0$ eikä $47$? Tämä johtuu siitä, laskussa on jakolasku jonka Python palauttaa desimaalilukuna ja päättää sen vuoksi lisätä desimaalipisteen tulokseen.
+
+<Harjoitus name="Matikan laskeminen" points={10} answer="15" level={1}>
+
+Kirjoita ohjelma joka laskee laskun $(2 + 3) * 4 - 5$ tuloksen ja tulostaa sen näytölle.
+
+</Harjoitus>
+
+<Harjoitus name="Sanallinen tulostustehtävä osa1" points={10} answer="11" level={2}>
+
+Kirjoita ohjelma joka tutkii kuinka monta kertaa luku 18 sisältyy lukuun 200 ja tulostaa tuloksen näytölle.
+
+</Harjoitus>
+
+<Harjoitus name="Sanallinen tulostustehtävä osa2" points={10} answer="Luku 18 sisältyy lukuun 200 yhteensä 11 kertaa." level={2}>
+
+Muokkaa edellisen tehtävän tulostusta siten, että se tulostaa näytölle edellisen tehtävän tuloksen muodossa `Luku 18 sisältyy lukuun 200 yhteensä x kertaa.`, missä `x` on edellisen tehtävän tulos.
 
 </Harjoitus>
 
@@ -118,14 +279,64 @@ print("Algoritmi", "Akatemia")
 
 Tulostaa seuraavanlaisesti:
 
-<EsimerkkiTulostus>AlgoritmiAkatemia Algoritmi Akatemia</EsimerkkiTulostus>
+<EsimerkkiTulostus>
+
+AlgoritmiAkatemia
+Algoritmi Akatemia
+
+</EsimerkkiTulostus>
 
 Eli `+` operaattori yhdistää tekstit toisiinsa ja `,` operaattori erottaa tekstit toisistaan välilyönnillä.
 
-<Harjoitus name="Tulostuksen muotoilu" points={10} answer="murtoluku">
+<Harjoitus name="Tulostuksen muotoilu" points={10} answer="murtoluku" level={1}>
 
-Kirjoita ohjelma joka tulostaa sanat `murto` ja `luku` yhteen ilman välilyöntiä käyttämällä sopivaa operaattoria.
+Kirjoita ohjelma joka tulostaa sanat `"murto"` ja `"luku"` yhteen ilman välilyöntiä käyttämällä sopivaa operaattoria.
 
 </Harjoitus>
 
-Ethän huijannut edellisessä tehtävässä? Hmmmm ... joka tapauksessa vaikuttaa siltä, että tulostaminen on sinulla hallinnassa! Siirry seuraavaan lukuun oppiaksesi lisää ohjelmoinnista.
+Ethän huijannut edellisessä tehtävässä? Hmmmm ... joka tapauksessa vaikuttaa siltä, että tulostaminenkin on sinulla hallinnassa! Tee vielä alla olevat yhteenvetotehtävät ja siirry seuraavaan lukuun oppiaksesi lisää ohjelmoinnista.
+
+<MonivalintaHarjoitus
+  questions={[
+    {
+      question: "Millä komennolla voit tulostaa tekstiä konsoliin Pythonilla?",
+      options: ["while", "for", "print", "elif"],
+      answer: "print",
+      points: 1,
+    },
+    {
+      question: "Mitä seuraava ohjelma tulostaa? print(12 + 2)",
+      options: ["12 + 2", "14", "print(14)", "virheen", "ei mitään"],
+      answer: "14",
+      points: 1,
+    },
+    {
+      question: "Mitä seuraava ohjelma tulostaa? print(9 % 3)",
+      options: ["0", "1", "2", "3", "virheen", "ei mitään"],
+      answer: "0",
+      points: 1,
+      explanation: "Jakojäännös kun luku 9 jaetaan luvulla 3 on 0.",
+    },
+    {
+      question:
+        "Mitä seuraava ohjelma tulostaa? print('algoritmi' + 'akatemia')",
+      options: [
+        "algoritmi akatemia",
+        "algoritmiakatemia",
+        "algoritmi, akatemia",
+        "virheen",
+        "ei mitään",
+      ],
+      answer: "algoritmiakatemia",
+      points: 1,
+      explanation: "Python yhdistää merkkijonot toisiinsa + operaattorilla.",
+    },
+    {
+        question: "Mitä seuraava ohjelma tulostaa? print(10 / 0)",
+        options: ["0", "10", "virheen", "ei mitään"],
+        answer: "virheen",
+        points: 1,
+        explanation: "Nollalla jakaminen aiheuttaa virheen.",
+    },
+  ]}
+/>
