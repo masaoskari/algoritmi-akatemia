@@ -26,11 +26,12 @@ const components: MDXComponents = {
   MonivalintaHarjoitus: MultipleChoiceExercise,
 };
 
-export default function ContentPage({
-  params,
-}: {
-  params: { slug: string[] };
-}) {
+export default async function ContentPage(
+  props: {
+    params: Promise<{ slug: string[] }>;
+  }
+) {
+  const params = await props.params;
   const { content } = getContentBySlug(params.slug.join("/"));
   return (
     <div className="prose mx-auto">
