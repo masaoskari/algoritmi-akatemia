@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import Link from "next/link";
 import { useState } from "react";
 import { Spin as Hamburger } from "hamburger-react";
@@ -8,7 +9,7 @@ import { FaLaptop } from "react-icons/fa6";
 import { FaTrophy } from "react-icons/fa6";
 import { usePathname } from "next/navigation";
 
-const categoriesIcons: Record<string, JSX.Element> = {
+const categoriesIcons: Record<string, React.ReactElement> = {
   "7lk": <FaBook />,
   "8lk": <FaLaptop />,
   "9lk": <FaTrophy />,
