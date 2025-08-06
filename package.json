@@ -53,10 +53,6 @@
   },
   "overrides": {
     "@types/react": "19.1.9",
-    "@types/react-dom": "19.1.7",
-    "framer-motion": {
-      "react": "$react",
-      "react-dom": "$react-dom"
-    }
+    "@types/react-dom": "19.1.7"
   }
 }
