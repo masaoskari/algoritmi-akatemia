@@ -16,6 +16,6 @@ module.exports = (phase, { defaultConfig }) => {
     // Common configuration for all phases except development
     pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
     output: "export",
-    basePath: "/algoritmi-akatemia", // basePath is set only for build and other non-development phases
+    basePath: "/", // basePath is set only for build and other non-development phases
   });
 };
