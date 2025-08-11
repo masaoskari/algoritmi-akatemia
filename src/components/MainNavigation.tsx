@@ -3,6 +3,7 @@ import Hamburger from "hamburger-react";
 import Link from "next/link";
 import { useState } from "react";
 import { LogoWithText } from "@/components/LogoWithText";
+import { FaUserCircle } from "react-icons/fa";
 
 export const MainNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,6 +47,13 @@ export const MainNavigation = () => {
           onClick={toggleMenu}
         >
           Materiaali
+        </Link>
+        <Link
+          href="/user"
+          className="text-white font-bold text-2xl hover:text-gray-500 text-center capitalize md:ml-auto md:mr-8"
+          onClick={toggleMenu}
+        >
+          <FaUserCircle />
         </Link>
       </nav>
     </div>

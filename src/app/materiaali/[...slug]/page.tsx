@@ -1,7 +1,7 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import React from "react";
 import "@/app/globals.css";
-import { Excercise } from "@/components/Excercise";
+import { Excercise } from "@/components/Exercise";
 import { MultipleChoiceExercise } from "@/components/MultipleChoiceExercise";
 import { CodeEditor } from "@/components/CodeEditor";
 import { ExamplePrint } from "@/components/ExamplePrint";
@@ -26,11 +26,9 @@ const components: MDXComponents = {
   MonivalintaHarjoitus: MultipleChoiceExercise,
 };
 
-export default async function ContentPage(
-  props: {
-    params: Promise<{ slug: string[] }>;
-  }
-) {
+export default async function ContentPage(props: {
+  params: Promise<{ slug: string[] }>;
+}) {
   const params = await props.params;
   const { content } = getContentBySlug(params.slug.join("/"));
   return (

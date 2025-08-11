@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fi">
       <head>
         <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
       </head>
