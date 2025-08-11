@@ -15,7 +15,7 @@ module.exports = (phase, { defaultConfig }) => {
   return withMDX({
     // Common configuration for all phases except development
     pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
-    output: "export",
+    //output: "export",
     basePath: "", // basePath is set only for build and other non-development phases
   });
 };
