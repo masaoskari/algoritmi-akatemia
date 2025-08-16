@@ -9,7 +9,30 @@ function usePyodide() {
       import sys
       import io
       import json
+      import time
       sys.stdout = io.StringIO()
+      
+      class TimeoutError(Exception):
+          pass
+      
+      execution_start_time = None
+      timeout_seconds = 1
+      
+      def timeout_trace(frame, event, arg):
+          global execution_start_time, timeout_seconds
+          
+          if execution_start_time and time.time() - execution_start_time > timeout_seconds:
+              raise TimeoutError("Code execution timed out")
+          
+          return timeout_trace
+      
+      def start_timeout_monitoring():
+          global execution_start_time
+          execution_start_time = time.time()
+          sys.settrace(timeout_trace)
+      
+      def stop_timeout_monitoring():
+          sys.settrace(None)
     `);
   };
 
@@ -47,19 +70,37 @@ function usePyodide() {
     `);
   };
 
-  const executePythonCode = async (code: string) => {
+  const executePythonCode = async (code: string, timeoutMs: number = 1000) => {
     try {
+      await pyodide.runPythonAsync(`
+        timeout_seconds = ${timeoutMs / 1000}
+        start_timeout_monitoring()
+      `);
+
       await pyodide.runPythonAsync(code);
+
+      await pyodide.runPythonAsync("stop_timeout_monitoring()");
+
       let result = await pyodide.runPythonAsync("sys.stdout.getvalue()");
       return result;
-    } catch (error) {
-      await pyodide.runPythonAsync(`
-        import traceback
-        def get_traceback():
-            return ''.join(traceback.format_exception(sys.last_type, sys.last_value, sys.last_traceback))
-      `);
-      let traceback = await pyodide.runPythonAsync("get_traceback()");
-      return traceback.toString();
+    } catch (error: any) {
+      await pyodide.runPythonAsync("stop_timeout_monitoring()");
+
+      if (error.toString().includes("TimeoutError")) {
+        return `Error: Koodin suoritus keskeytettiin, koska se ylitti aikarajan (katso, että koodisi ei sisällä ikuisia silmukoita 🔄)`;
+      } else {
+        try {
+          await pyodide.runPythonAsync(`
+            import traceback
+            def get_traceback():
+                return ''.join(traceback.format_exception(sys.last_type, sys.last_value, sys.last_traceback))
+          `);
+          let traceback = await pyodide.runPythonAsync("get_traceback()");
+          return traceback.toString();
+        } catch (tracebackError) {
+          return error.toString();
+        }
+      }
     }
   };
 
