@@ -1,5 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createClient } from "@/utils/supabase/client";
+import { User } from "@supabase/supabase-js";
+import {
+  getExercisePoints,
+  markExerciseAsCompleted,
+} from "@/actions/exerciseActions";
 
 type Question = {
   question: string;
@@ -10,14 +16,50 @@ type Question = {
 };
 
 type MultipleChoiceExerciseProps = {
+  name: string;
   questions: Question[];
+  level: number;
 };
 
 export const MultipleChoiceExercise = ({
+  name,
   questions,
+  level,
 }: MultipleChoiceExerciseProps) => {
   const [results, setResults] = useState<Record<string, boolean>>({});
   const [totalPoints, setTotalPoints] = useState<number>(0);
+
+  const [user, setUser] = useState<User | null>(null);
+  const supabase = createClient();
+
+  // TODO: maybe use context for user state
+  useEffect(() => {
+    const initExercise = async () => {
+      try {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        setUser(user);
+
+        if (user) {
+          const points = await getExercisePoints(name);
+          setTotalPoints(points);
+        }
+      } catch (error) {
+        console.error("Error initializing exercise:", error);
+      }
+    };
+
+    initExercise();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
+      setUser(session?.user || null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [name]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,6 +84,7 @@ export const MultipleChoiceExercise = ({
 
     setResults(results);
     setTotalPoints(points);
+    markExerciseAsCompleted(name, points);
   };
 
   const maxPoints = questions.reduce(
@@ -51,9 +94,20 @@ export const MultipleChoiceExercise = ({
 
   return (
     <div className="rounded shadow-lg p-4">
+      {!user && (
+        <p className="text-yellow-800 text-sm text-center">
+          🔒 Kirjaudu sisään kerätäksesi pisteitä tästä tehtävästä
+        </p>
+      )}
       <div className="flex justify-between items-center">
-        <h3>Monivalintakysymyksiä</h3>
-        <p className="mt-8 text-blue-600 font-semibold">
+        <h3>
+          {"⭐".repeat(level)} {name}
+        </h3>
+        <p
+          className={`mt-8 font-semibold ${
+            totalPoints === maxPoints ? "text-green-600" : "text-blue-600"
+          }`}
+        >
           Pisteet: {totalPoints} / {maxPoints}
         </p>
       </div>

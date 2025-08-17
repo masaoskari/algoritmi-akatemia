@@ -17,7 +17,7 @@ if (!isDryRun) {
 }
 
 // Regular expressions to extract exercise data from MDX
-const EXERCISE_REGEX = /<(?:Harjoitus)\s+([^>]*?)>/g;
+const EXERCISE_REGEX = /<(?:Harjoitus|MonivalintaHarjoitus)\s+([^>]*?)>/g;
 
 function parseExerciseProps(propsString) {
   const props = {};

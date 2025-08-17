@@ -64,7 +64,7 @@ if ika >= 18:
 ```
 
 Ohjelma kysyy käyttäjältä ikää ja tarkistaa onko käyttäjä täysi-ikäinen. Jos käyttäjä on täysi-ikäinen, niin ohjelma tulostaa `Olet täysi-ikäinen.` Muussa tapauksessa ohjelma ei tulosta mitään. Huomasitko miten muodostimme ehdon? Käytimme `if{:python}`-komentoa ja vertailuoperaattoria `>=` tutkimaan onko käyttäjän ikä suurempi tai yhtäsuuri kuin 18. Tässä on tärkeä huomata, että ehto tulee aina `if{:python}`-komenton jälkeen ja ehto tulee sulkea kaksoispisteillä `:`.
-Se mitä ehdon jälkeen tulee suorittaa, tulee sisentää tabulaattorilla. 
+Se mitä ehdon jälkeen tulee suorittaa, tulee sisentää tabulaattorilla.
 
 Lisätään vielä edelliseen ohjelmaan tulostus, jos käyttäjä ei ole täysi-ikäinen:
 
@@ -147,8 +147,10 @@ Sillä toinen ehto on tosi (5 on pienempi kuin 10).
 <Harjoitus 
     name="Ensimmäinen ehto tehtävä"
     points={10}
-    answer=""
+    answer="Anna luku: 1
+            False"
     level={1}
+    input={[1]}
     >
 
 Tee ohjelma, joka kysyy käyttäjältä luvun ja tulostaa näytölle `True`, jos luku on suurempi kuin 10 ja `False`, jos luku on pienempi tai yhtäsuuri kuin 10.
