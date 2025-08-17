@@ -35,13 +35,6 @@ export const MainNavigation = () => {
       >
         <LogoWithText />
         <Link
-          href="#tietoja"
-          className="text-white font-bold text-xl hover:text-gray-500 text-center capitalize"
-          onClick={toggleMenu}
-        >
-          Tietoja
-        </Link>
-        <Link
           href="/materiaali/7lk"
           className="text-white font-bold text-xl hover:text-gray-500 text-center capitalize"
           onClick={toggleMenu}
