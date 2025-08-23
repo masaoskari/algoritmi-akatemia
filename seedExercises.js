@@ -33,7 +33,6 @@ function parseExerciseProps(propsString) {
     let match;
     while ((match = pattern.exec(propsString)) !== null) {
       const [, key, value] = match;
-
       if (!props[key]) {
         // Convert specific props to correct types
         if (key === "points" || key === "level") {
@@ -47,10 +46,87 @@ function parseExerciseProps(propsString) {
   });
   return props;
 }
+// Replace the extractQuestionsFromContent function with this more robust version:
+function extractQuestionsFromContent(content, exerciseName) {
+  // Find the start of the MonivalintaHarjoitus with this name
+  const namePattern = new RegExp(
+    `<MonivalintaHarjoitus[\\s\\S]*?name="${exerciseName}"`,
+    "g"
+  );
+  const nameMatch = namePattern.exec(content);
+
+  if (!nameMatch) {
+    console.warn(
+      `   ⚠️  Could not find MonivalintaHarjoitus with name "${exerciseName}"`
+    );
+    return null;
+  }
+
+  // Find questions={ after the name
+  const questionsStartPattern = /questions=\{/g;
+  questionsStartPattern.lastIndex = nameMatch.index;
+  const questionsStart = questionsStartPattern.exec(content);
+
+  if (!questionsStart) {
+    console.warn(`   ⚠️  Could not find questions prop for "${exerciseName}"`);
+    return null;
+  }
+
+  // Find the matching closing brace by counting braces
+  let braceCount = 1;
+  let index = questionsStart.index + questionsStart[0].length;
+  const startIndex = index;
+
+  while (index < content.length && braceCount > 0) {
+    const char = content[index];
+    if (char === "{") braceCount++;
+    if (char === "}") braceCount--;
+    index++;
+  }
+
+  if (braceCount !== 0) {
+    console.warn(
+      `   ⚠️  Could not find matching closing brace for questions in "${exerciseName}"`
+    );
+    return null;
+  }
+
+  const questionsContent = content.substring(startIndex, index - 1);
+
+  try {
+    const questions = eval(`(${questionsContent})`);
+
+    if (isVerbose) {
+      console.log(
+        `   📝 Successfully parsed ${questions.length} questions from "${exerciseName}"`
+      );
+      questions.forEach((q, i) => {
+        console.log(
+          `      ${i + 1}. "${q.question}" → "${q.answer}" (${q.points}pts)`
+        );
+      });
+    }
+
+    return questions;
+  } catch (error) {
+    console.warn(
+      `   ⚠️  Failed to parse questions for "${exerciseName}": ${error.message}`
+    );
+
+    if (isVerbose) {
+      console.log(`   🔍 Problematic content: ${questionsContent}`);
+    }
+
+    return null;
+  }
+}
 
 function validateExercise(exercise, filePath) {
-  const required = ["name", "points", "answer", "level"];
-  const missing = required.filter((field) => !exercise[field]);
+  const required = ["name", "points", "level"];
+  // Answer can be empty string for some exercises
+  const missing = required.filter(
+    (field) => exercise[field] === undefined || exercise[field] === null
+  );
 
   if (missing.length > 0) {
     console.warn(
@@ -80,21 +156,45 @@ function extractExercisesFromMDX(filePath, category) {
   while ((match = EXERCISE_REGEX.exec(content)) !== null) {
     const propsString = match[1];
     const props = parseExerciseProps(propsString);
+    // Check if this is a MonivalintaHarjoitus
+    const isMonivalinta = match[0].includes("MonivalintaHarjoitus");
 
-    const exercise = {
+    let exercise = {
       name: props.name,
       category: category,
-      points: props.points,
-      answer: props.answer,
+      points: props.points || 0,
+      answer: props.answer || "",
       level: props.level,
     };
+
+    // Handle MonivalintaHarjoitus differently
+    if (isMonivalinta && props.name) {
+      const questions = extractQuestionsFromContent(content, props.name);
+      if (questions && questions.length > 0) {
+        // Calculate total points from questions
+        const totalPoints = questions.reduce(
+          (sum, q) => sum + (q.points || 0),
+          0
+        );
+        // Extract all correct answers
+        const answers = questions.map((q) => q.answer);
+        // Update exercise with calculated data
+        exercise.points = totalPoints > 0 ? totalPoints : props.points || 0;
+        exercise.answer = JSON.stringify(answers); // Store as JSON array
+      } else {
+        console.warn(
+          `   ⚠️  MonivalintaHarjoitus "${props.name}" has no parseable questions`
+        );
+      }
+    }
 
     if (validateExercise(exercise, filePath)) {
       exercises.push(exercise);
 
       if (isVerbose) {
+        const type = isMonivalinta ? "MonivalintaHarjoitus" : "Harjoitus";
         console.log(
-          `   ✓ Found: "${exercise.name}" (${exercise.points}pts, Level ${exercise.level})`
+          `   ✓ Found ${type}: "${exercise.name}" (${exercise.points}pts, Level ${exercise.level})`
         );
       }
     }
@@ -105,19 +205,35 @@ function extractExercisesFromMDX(filePath, category) {
 
 function displayExercisesSummary(exercises) {
   const totalPoints = exercises.reduce((sum, ex) => sum + ex.points, 0);
-  const avgPoints = Math.round(totalPoints / exercises.length);
+  const avgPoints =
+    exercises.length > 0 ? Math.round(totalPoints / exercises.length) : 0;
   const levelCounts = exercises.reduce((acc, ex) => {
     acc[ex.level] = (acc[ex.level] || 0) + 1;
     return acc;
   }, {});
 
+  // Count exercise types
+  const typeCount = exercises.reduce((acc, ex) => {
+    try {
+      // Check if answer is a JSON array (MonivalintaHarjoitus)
+      JSON.parse(ex.answer);
+      acc.monivalinta = (acc.monivalinta || 0) + 1;
+    } catch {
+      acc.regular = (acc.regular || 0) + 1;
+    }
+    return acc;
+  }, {});
+
   console.log("\n📊 Statistics:");
   console.log(`   Total exercises: ${exercises.length}`);
+  console.log(`   Regular exercises: ${typeCount.regular || 0}`);
+  console.log(`   Multiple choice exercises: ${typeCount.monivalinta || 0}`);
   console.log(`   Total points: ${totalPoints}`);
   console.log(`   Average points: ${avgPoints}`);
   console.log(`   Level distribution:`, levelCounts);
 }
 
+// Rest of your existing seedExercises function stays the same...
 async function seedExercises() {
   try {
     console.log(
@@ -191,10 +307,13 @@ async function seedExercises() {
     if (isDryRun) {
       console.log("\n🧪 DRY RUN: Would upsert the following exercises:");
       allExercises.forEach((ex, i) => {
+        const type = ex.answer.startsWith("[")
+          ? "MonivalintaHarjoitus"
+          : "Harjoitus";
         console.log(
-          `   ${i + 1}. ${ex.name} (${ex.category}, ${ex.points}pts, Level ${
-            ex.level
-          })`
+          `   ${i + 1}. ${ex.name} (${type}, ${ex.category}, ${
+            ex.points
+          }pts, Level ${ex.level})`
         );
       });
       console.log("\n✅ Dry run completed successfully!");
@@ -229,10 +348,13 @@ async function seedExercises() {
       console.log("✅ Successfully seeded exercises!");
       console.log("📈 Processed exercises:");
       allExercises.forEach((ex, i) => {
+        const type = ex.answer.startsWith("[")
+          ? "MonivalintaHarjoitus"
+          : "Harjoitus";
         console.log(
-          `   ${i + 1}. ${ex.name} (${ex.category}, ${ex.points}pts, Level ${
-            ex.level
-          })`
+          `   ${i + 1}. ${ex.name} (${type}, ${ex.category}, ${
+            ex.points
+          }pts, Level ${ex.level})`
         );
       });
     }
