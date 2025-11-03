@@ -52,7 +52,7 @@ const SidePanel = ({
       <div
         className={
           "pl-8 mt-8 md:flex md:flex-col w-full gap-4 " +
-          (isOpen ? "flex flex-col h-screen" : "hidden")
+          (isOpen ? "flex flex-col h-screen overflow-y-auto" : "hidden")
         }
       >
         {categories.map((category) => {
