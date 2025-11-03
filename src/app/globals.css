@@ -34,4 +34,7 @@ pre {
   border-radius: 0.5rem;
   background-color: white !important;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
 }
