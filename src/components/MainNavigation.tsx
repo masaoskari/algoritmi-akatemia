@@ -42,6 +42,13 @@ export const MainNavigation = () => {
           Materiaali
         </Link>
         <Link
+          href="/playground"
+          className="text-white font-bold text-xl hover:text-gray-500 text-center capitalize"
+          onClick={toggleMenu}
+        >
+          Leikkikenttä
+        </Link>
+        <Link
           href="/user"
           className="text-white font-bold text-2xl hover:text-gray-500 text-center capitalize md:ml-auto md:mr-8"
           onClick={toggleMenu}

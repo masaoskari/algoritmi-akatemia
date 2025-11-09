@@ -4,6 +4,7 @@ import "@/app/globals.css";
 import { Excercise } from "@/components/Exercise";
 import { MultipleChoiceExercise } from "@/components/MultipleChoiceExercise";
 import { CodeEditor } from "@/components/CodeEditor";
+import { TurtleEditor } from "@/components/TurtleEditor";
 import { ExamplePrint } from "@/components/ExamplePrint";
 import { MDXComponents } from "mdx/types";
 import { getContentBySlug, getAllContentSlugs } from "@/lib/mdxUtils";
@@ -22,6 +23,7 @@ const options = {
 const components: MDXComponents = {
   Harjoitus: Excercise,
   KoodiEditori: CodeEditor,
+  KilpikonnaEditori: TurtleEditor,
   EsimerkkiTulostus: ExamplePrint,
   MonivalintaHarjoitus: MultipleChoiceExercise,
 };
@@ -32,7 +34,7 @@ export default async function ContentPage(props: {
   const params = await props.params;
   const { content } = getContentBySlug(params.slug.join("/"));
   return (
-    <div className="prose mx-auto">
+    <div className="prose mx-auto w-full">
       <MDXRemote
         source={content}
         components={components}

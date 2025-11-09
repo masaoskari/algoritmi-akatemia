@@ -9,6 +9,8 @@ module.exports = {
       colors: {
         primary: "#20BAF6",
         background: "#11111D",
+        dracula_bg: "#282a36",
+        dracula_highlight: "#ff79c6",
       },
       /* https://stackoverflow.com/questions/73067312/remove-prose-from-a-child-tailwind-typography */
       typography: {
