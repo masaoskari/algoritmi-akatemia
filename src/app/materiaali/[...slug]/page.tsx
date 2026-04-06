@@ -14,6 +14,10 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
 const options = {
+  // NEW SECURITY SETTINGS FOR V6+
+  // This allows the { [ ... ] } and { 1 } expressions to run
+  // @ts-ignore - types might lag behind the security update
+  blockJS: false,
   mdxOptions: {
     remarkPlugins: [remarkGfm, remarkMath],
     rehypePlugins: [[rehypePrettyCode, { theme: "one-light" }], rehypeKatex],
