@@ -70,7 +70,7 @@ function usePyodide() {
     `);
   };
 
-  const executePythonCode = async (code: string, timeoutMs: number = 1000) => {
+  const executePythonCode = async (code: string, timeoutMs: number = 5000) => {
     try {
       await pyodide.runPythonAsync(`
         timeout_seconds = ${timeoutMs / 1000}
@@ -87,7 +87,8 @@ function usePyodide() {
       await pyodide.runPythonAsync("stop_timeout_monitoring()");
 
       if (error.toString().includes("TimeoutError")) {
-        return `Error: Koodin suoritus keskeytettiin, koska se ylitti aikarajan (katso, että koodisi ei sisällä ikuisia silmukoita 🔄)`;
+        let output = await pyodide.runPythonAsync("sys.stdout.getvalue()[:500]");
+        return `Error: Koodin suoritus keskeytettiin, koska se ylitti aikarajan (katso, että koodisi ei sisällä ikuisia silmukoita 🔄)\n\nTuloste:\n${output}...`;
       } else {
         try {
           await pyodide.runPythonAsync(`

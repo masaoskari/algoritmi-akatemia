@@ -2,15 +2,20 @@
 import usePyodide from "@/hooks/usePyodide";
 import { useState } from "react";
 import { checkAnswer } from "@/lib/exerciseUtils";
+import { TestSpec, generateTestCode, validateTestSpecs } from "@/lib/testUtils";
 import AceEditor from "react-ace-builds";
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-chrome";
 
 type CodeEditorProps = {
-  onCodeExecution?: (output: string) => void;
+  onCodeExecution?: (
+    output: string,
+    testResults: { passed: number; total: number },
+  ) => void;
   input?: string[];
   answer?: string | undefined;
-  height?: number; // Height of the editor in pixels
+  height?: number;
+  tests?: TestSpec[];
 };
 
 export const CodeEditor = ({
@@ -18,9 +23,11 @@ export const CodeEditor = ({
   height = 300,
   input = [],
   answer = undefined,
+  tests,
 }: CodeEditorProps) => {
   const { runPythonCode } = usePyodide();
   const [output, setOutput] = useState<string>("");
+  const [testResults, setTestResults] = useState<string | null>(null);
   const [userInput, setUserInput] = useState<string>("");
 
   const onCodeChange = (value: string) => {
@@ -28,9 +35,30 @@ export const CodeEditor = ({
   };
 
   const runCode = async () => {
-    const output = await runPythonCode(userInput, input);
-    setOutput(output);
-    if (onCodeExecution) onCodeExecution(output);
+    // Validate test specs if they exist
+    if (tests && tests.length > 0) {
+      const errors = validateTestSpecs(tests);
+      if (errors.length > 0) {
+        setOutput(`Error in test configuration:\n${errors.join("\n")}`);
+        return;
+      }
+
+      // Generate and run test code
+      const codeToRun = generateTestCode(tests, userInput);
+      const result = await runPythonCode(codeToRun, input);
+      const passed = (result.match(/✅/g) || []).length;
+      setTestResults(result);
+      const output = await runPythonCode(userInput, input);
+      setOutput(output);
+      if (onCodeExecution)
+        onCodeExecution(output, { passed: passed, total: tests.length });
+      return;
+    }
+
+    // Run without tests
+    const result = await runPythonCode(userInput, input);
+    setOutput(result);
+    if (onCodeExecution) onCodeExecution(result, { passed: 0, total: 0 });
   };
 
   return (
@@ -67,6 +95,15 @@ export const CodeEditor = ({
         </div>
         <div className="px-4 pb-4">{output}</div>
       </div>
+      {testResults && (
+        <div
+          style={{ whiteSpace: "pre-wrap" }}
+          className="m-4 min-h-[200px] shadow-lg"
+        >
+          <p className="font-semibold px-4">🧪 Testit</p>
+          <div className="px-4 pb-4">{testResults}</div>
+        </div>
+      )}
     </div>
   );
 };

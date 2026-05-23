@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { CodeEditor } from "./CodeEditor";
 import { checkAnswer } from "@/lib/exerciseUtils";
+import { TestSpec } from "@/lib/testUtils";
 import { User } from "@supabase/supabase-js";
 import {
   isExerciseCompleted,
@@ -18,6 +19,7 @@ type ExcerciseProps = {
   answer: string;
   level: number;
   input?: string[];
+  tests?: TestSpec[];
 };
 
 export const Excercise = ({
@@ -28,15 +30,31 @@ export const Excercise = ({
   answer,
   level,
   input,
+  tests,
 }: ExcerciseProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<User | null>(null);
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
   const supabase = createClient();
 
-  const handleCodeExecutionOutput = (output: string) => {
-    setIsCompleted(checkAnswer(output, answer));
-    markExerciseAsCompleted(name, points);
+  const handleCodeExecutionOutput = (
+    output: string,
+    testResults: { passed: number; total: number },
+  ) => {
+    let isCorrect = false;
+    console.log("Code execution output:", output);
+    console.log("Test results:", testResults);
+    if (tests && tests.length > 0) {
+      isCorrect = testResults.passed === testResults.total;
+    } else {
+      isCorrect = checkAnswer(output, answer);
+    }
+
+    setIsCompleted(isCorrect);
+
+    if (isCorrect && user) {
+      markExerciseAsCompleted(name, points);
+    }
   };
 
   useEffect(() => {
@@ -81,8 +99,8 @@ export const Excercise = ({
             isCompleted && user
               ? "bg-green-600"
               : !user
-              ? "bg-amber-700"
-              : "bg-blue-600"
+                ? "bg-amber-700"
+                : "bg-blue-600"
           }`}
         >
           {!user && (
@@ -107,6 +125,7 @@ export const Excercise = ({
           height={editorHeight}
           answer={answer}
           input={input}
+          tests={tests}
           onCodeExecution={handleCodeExecutionOutput}
         />
       </div>
