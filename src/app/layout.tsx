@@ -6,6 +6,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Algoritmi akatemia",
   description: "Algoritmi akatemia nettisivut koodauksen opiskeluun.",
+  icons: {
+    icon: "/a_a_logo.svg",
+  },
 };
 
 export default function RootLayout({
