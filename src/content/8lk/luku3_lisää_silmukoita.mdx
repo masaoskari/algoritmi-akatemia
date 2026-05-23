@@ -1,0 +1,167 @@
+---
+title: "Lisää silmukoita"
+slug: "8lk/silmukoita"
+category: "8lk"
+---
+
+# Lisää silmukoita
+
+## For-silmukka
+
+`for`-silmukka on toinen tapa kirjoittaa silmukka Pythonissa. Se on erityisen hyödyllinen, kun haluamme suorittaa tietyn koodilohkon tietyn määrän kertoja tai käydä läpi kaikki alkiot jossakin kokoelmassa, kuten listassa. `for`-silmukka kirjoitetaan seuraavasti:
+
+```python
+for i in range(5):
+    # suoritettavat lauseet
+```
+Tässä `range(5)` luo sarjan lukuja 0, 1, 2, 3 ja 4. `for`-silmukka suoritetaan viisi kertaa, ja joka kerralla `i` saa arvon yhdestä näistä luvuista. Voimme käyttää `i`-muuttujaa silmukan sisällä, esimerkiksi:
+
+```python
+for i in range(5):
+    print(i)
+```
+<EsimerkkiTulostus>
+0
+1
+2
+3
+4
+</EsimerkkiTulostus>
+
+Tässä ohjelmassa `for`-silmukka käy läpi kaikki luvut 0:sta 4:ään ja tulostaa ne. 
+
+`for`-silmukka on erittäin kätevä, kun haluamme käydä läpi kaikki alkiot jossakin kokoelmassa, kuten listassa. Esimerkiksi:
+
+```python
+lista = [10, 20, 30, 40, 50]
+for luku in lista:
+    print(luku)
+```
+
+<EsimerkkiTulostus>
+10
+20
+30
+40
+50
+</EsimerkkiTulostus>
+
+Tässä ohjelmassa `for`-silmukka käy läpi kaikki alkiot listassa `lista` ja tulostaa ne.
+
+<Harjoitus
+    name="For-silmukka" 
+    points={10} 
+    answer="0\n2\n4\n6\n8\n10"         
+    level={1}>
+
+Kirjoita ohjelma, joka käyttää `for`-silmukkaa tulostaakseen kaikki parilliset luvut välillä 0-10.
+
+Vinkki: Voit käyttää `range()`-funktiota, joka ottaa kolme argumenttia: aloitus, lopetus ja askel. Esimerkiksi `range(0, 11, 2)` luo sarjan lukuja 0, 2, 4, 6, 8 ja 10. Tai vaihtoehtoisesti voit käyttää `if`-lausetta `for`-silmukan sisällä tarkistaaksesi, onko luku parillinen.
+
+<EsimerkkiTulostus>
+0
+2
+4
+6
+8
+10
+</EsimerkkiTulostus>
+
+</Harjoitus>
+
+<Harjoitus
+    name="Listan läpikäynti for-silmukalla" 
+    points={10} 
+    answer="omena\nbanaani\nappelsiini\nmango"         
+    level={1}>
+
+Kirjoita ohjelma, joka käyttää `for`-silmukkaa käydäkseen läpi seuraavan listan hedelmiä ja tulostaa ne allekkain:
+
+```python
+hedelmat = ["omena", "banaani", "appelsiini", "mango"]
+```
+</Harjoitus>
+
+<Harjoitus
+    name="Yhteenlasku for-silmukalla" 
+    points={10} 
+    answer="500500"         
+    level={1}>
+
+Kirjoita ohjelma, joka käyttää `for`-silmukkaa laskemaan yhteen kaikki luvut välillä 1-1000:
+
+</Harjoitus>
+
+<Harjoitus
+    name="Kertotaulun tulostus for-silmukalla"
+    points={10}
+    answer="Anna luku: 3\n3 x 1 = 3\n3 x 2 = 6\n3 x 3 = 9\n3 x 4 = 12\n3 x 5 = 15\n3 x 6 = 18\n3 x 7 = 21\n3 x 8 = 24\n3 x 9 = 27\n3 x 10 = 30"
+    level={2}
+    input={[3]}>
+
+Kirjoita ohjelma, joka kysyy käyttäjältä luvun ja käyttää `for`-silmukkaa tulostaakseen kyseisen luvun kertotaulun (kertotaulut 1-10). Esimerkiksi, jos käyttäjä syöttää luvun 5, ohjelman tulisi tulostaa:
+
+<EsimerkkiTulostus>
+Anna luku: 5
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+5 x 6 = 30
+5 x 7 = 35
+5 x 8 = 40
+5 x 9 = 45
+5 x 10 = 50
+</EsimerkkiTulostus>
+
+</Harjoitus>
+
+<Harjoitus
+    name="Korttipakan tulostus for-silmukalla"
+    points={10}
+    answer="2 pata\n3 pata\n4 pata\n5 pata\n6 pata\n7 pata\n8 pata\n9 pata\n10 pata\nJ pata\nQ pata\nK pata\nA pata\n2 hertta\n3 hertta\n4 hertta\n5 hertta\n6 hertta\n7 hertta\n8 hertta\n9 hertta\n10 hertta\nJ hertta\nQ hertta\nK hertta\nA hertta\n2 ruutu\n3 ruutu\n4 ruutu\n5 ruutu\n6 ruutu\n7 ruutu\n8 ruutu\n9 ruutu\n10 ruutu\nJ ruutu\nQ ruutu\nK ruutu\nA ruutu\n2 risti\n3 risti\n4 risti\n5 risti\n6 risti\n7 risti\n8 risti\n9 risti\n10 risti\nJ risti\nQ risti\nK risti\nA risti"
+    level={2}>
+
+Kirjoita ohjelma, joka käyttää `for`-silmukkaa tulostaakseen kaikki korttipakan kortit allekkain alkaen padasta. Korttipakkaa voidaan kuvata kahtena listana: yksi, joka sisältää maita ja toinen, joka sisältää korttien arvot. Esimerkiksi:
+
+```python
+maat = ["pata", "hertta", "ruutu", "risti"]
+arvot = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]
+```
+
+<EsimerkkiTulostus>
+2 pata
+3 pata
+...
+A risti
+</EsimerkkiTulostus>
+
+</Harjoitus>
+
+<Harjoitus
+    name="Värisuora"
+    points={10}
+    answer="Anna kortin maa: pata\nAnna kortin arvo: 2\npata 2\npata 3\npata 4\npata 5\npata 6"
+    level={4}
+    input={["pata", 2]}>
+
+Korttipakkaa voidaan kuvata kahtena listana: yksi, joka sisältää maita ja toinen, joka sisältää korttien arvot. Esimerkiksi:
+
+```python
+maat = ["pata", "hertta", "ruutu", "risti"]
+arvot = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]
+```
+Kirjoita ohjelma joka kysyy käyttäjältä kortin maan ja arvon ja tulostaa värisuoran (viisi korttia) kyseisestä maasta alkaen kortista, joka käyttäjä valitsi. Esimerkiksi, jos käyttäjä valitsee maan "hertta" ja arvon 10, ohjelman tulisi tulostaa:
+
+<EsimerkkiTulostus>
+Anna kortin maa: hertta
+Anna kortin arvo: 10
+10 hertta
+J hertta
+Q hertta
+K hertta
+A hertta
+</EsimerkkiTulostus>
+
+</Harjoitus>

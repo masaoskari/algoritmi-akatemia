@@ -1,0 +1,65 @@
+---
+title: "Funktiot"
+slug: "9lk/luku1"
+category: "9lk"
+---
+
+# Funktiot
+
+Ohjelmat, jotka olemme tähän asti kirjoittaneet, ovat olleet melko yksinkertaisia. Kun kirjoitamme monimutkaisempia ohjelmia tai ohjelmia, jotka tekevät useita erilaisia asioita, on hyödyllistä jakaa ohjelma pienempiin osiin. Funktiot ovat yksi tapa tehdä tämä. Ohjelmoinnissa vastaavasti kuin matematiikassa funktiolle syötetään arvoja (parametrit) ja funktio tekee jotain näillä arvoilla ja palauttaa tuloksen. Tätä voidaan havainnollistaa seuraavasti:
+
+<div style={{textAlign: 'center', fontSize: '1.25rem'}}>
+
+$$ parametri(t) \rightarrow \boxed{f(parametri(t))} \rightarrow paluuarvo(t) $$
+
+</div>
+
+Funktio on siis kuin musta laatikko, joka ottaa sisäänsä parametreja, tekee jotain niillä ja palauttaa tuloksen. Pythonissa funktio määritellään `def{:python}`-avainsanalla, jota seuraa funktion nimi ja sulkeet, joissa määritellään parametrit. Esimerkiksi:
+
+```python
+def funktio(parametri1, parametri2):
+    # Ohjelmakoodi, joka käyttää parametreja
+    return paluuarvo
+```
+
+Tässä `def{:python}`-avainsana kertoo Pythonille, että määrittelemme funktion. `funktio` on funktion nimi, ja `parametri1` ja `parametri2` ovat funktion parametreja. Funktion runko kirjoitetaan sisennettynä funktion määrittelyn alle, ja `return{:python}`-avainsana kertoo, mikä arvo funktio palauttaa.
+
+Esimerkiksi, jos haluamme määritellä funktion, joka laskee kahden luvun summan, voimme kirjoittaa seuraavasti:
+
+```python
+def summa(a, b):
+    return a + b
+```
+
+Tässä `summa`-funktio ottaa kaksi parametria, `a` ja `b`, ja palauttaa niiden summan. Voimme käyttää tätä funktiota seuraavasti:
+
+```python
+tulos = summa(3, 5)
+print(tulos)
+```
+
+Tämä ohjelma tulostaa `8`, koska `summa(3, 5)` palauttaa `3 + 5`, joka on `8`. Kokonaisuudessaan ohjelma näyttää tältä:
+
+```python
+def summa(a, b):
+    return a + b
+
+tulos = summa(3, 5)
+print(tulos)
+```
+
+<Harjoitus
+    name="Yksinkertainen funktio"
+    points={10}
+    answer="15"
+    level={1}
+    tests={[
+      { tyyppi: "funktio", nimi: "kertolasku", parametrit: [5, 10], paluuarvo: 50, viesti: "kertolasku(5, 10) pitäisi palauttaa 50" },
+      { tyyppi: "koodianalyysi", testi: "sisältää", arvo: "def", viesti: "Ohjelman pitäisi sisältää funktion määrittely" },
+      { tyyppi: "tuloste", parametrit: [], tulostus: "50", viesti: "Ohjelman pitäisi tulostaa 50" },
+    ]}>
+    >
+
+Määrittele funktio `kertolasku`, joka ottaa kaksi parametria ja palauttaa niiden tulon. Käytä tätä funktiota laskemaan `5` kertaa `10` ja tulosta tulos.
+
+</Harjoitus>

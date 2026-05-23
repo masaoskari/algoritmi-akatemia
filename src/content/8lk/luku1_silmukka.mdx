@@ -1,0 +1,105 @@
+---
+title: "Silmukka"
+slug: "8lk/luku1"
+category: "8lk"
+---
+
+# Silmukka
+
+Tähän asti olemme kirjoittaneet ohjelmia, jotka suoritetaan vain kerran. Ohjelma on siis suoritettu, kun se on saavuttanut loppunsa. Usein haluamme kuitenkin, että ohjelma suoritetaan useita kertoja, esimerkiksi niin kauan kuin käyttäjä haluaa jatkaa ohjelman käyttöä. Tällöin tarvitsemme silmukkaa. Silmukka on ohjelman osa, joka suoritetaan uudestaan ja uudestaan, kunnes tietty ehto täyttyy. Pythonissa on useita tapoja kirjoittaa silmukoita, mutta tässä luvussa keskitymme `while`-silmukkaan.
+
+## While-silmukka
+
+`while`-silmukka suoritetaan niin kauan kuin sen ehto on tosi. Se kirjoitetaan seuraavasti:
+
+```python
+while ehto:
+    # suoritettavat lauseet
+```
+
+Esimerkiksi, jos haluamme tulostaa "Hei maailma!" viisi kertaa, voimme käyttää `while`-silmukkaa seuraavasti:
+
+```python
+i = 1
+while i <= 5:
+    print("Hei maailma!")
+    i += 1
+```
+<EsimerkkiTulostus>
+Hei maailma!
+Hei maailma!
+Hei maailma!
+Hei maailma!
+Hei maailma!
+</EsimerkkiTulostus>
+
+Tässä ohjelmassa aloitamme määrittelemällä muuttujan `i` jonka avulla pidämme kirjaa siitä, kuinka monta kertaa olemme tulostaneet "Hei maailma!". `while`-silmukka suoritetaan niin kauan kuin `i` on pienempi tai yhtä suuri kuin 5. Jokaisella silmukan suorituskerralla tulostamme "Hei maailma!" ja kasvatamme `i`-muuttujaa yhdellä. Kun `i` saavuttaa arvon 6, ehto `i <= 5` ei enää päde, ja silmukka lopettaa suorituksensa.
+
+Tämän olisi voinut toteuttaa myös ilman silmukkaa, mutta se olisi vaatinut viisi erillistä `print()`-komentoa. Ohjelmoijat ovat tunnetusti laiskoja, joten he haluavat kirjoittaa mahdollisimman vähän koodia tekemään asioita, jotka voidaan toteuttaa tehokkaasti. Silmukat ovat yksi tapa tehdä tämä.
+
+<Harjoitus
+    name="Lähtölaskenta" 
+    points={10} 
+    answer="5\n4\n3\n2\n1\nNyt!"         
+    level={1}>
+Kirjoita ohjelma käyttäen `while`-silmukkaa, joka tekee lähtölaskennan viidestä yhteen ja tulostaa lopuksi "Nyt!".
+
+<EsimerkkiTulostus>
+5
+4
+3
+2
+1
+Nyt!
+</EsimerkkiTulostus>
+
+</Harjoitus>
+
+## Ikuinen silmukka
+Silmukoiden kanssa on syytä olla varovainen, sillä on mahdollista kirjoittaa ohjelma, joka ei koskaan lopu. Tällöin puhutaan ikuisesta silmukasta. Ikuinen silmukka syntyy, kun `while`-silmukan ehto on aina tosi. Esimerkiksi:
+
+```python
+while True:
+    print("Tämä on ikuinen silmukka!")
+```
+
+Tämä ohjelma tulostaa "Tämä on ikuinen silmukka!" loputtomasti, koska `True` on aina tosi. Ikuiset silmukat voivat olla hyödyllisiä tietyissä tilanteissa, kuten palvelimilla, jotka haluavat kuunnella jatkuvasti saapuvia pyyntöjä. Kuitenkin, jos kirjoitat ikuisen silmukan vahingossa, se voi aiheuttaa ongelmia, kuten tietokoneen hidastumista tai kaatumista. Siksi on tärkeää varmistaa, että `while`-silmukan ehto muuttuu epätodeksi jossain vaiheessa.
+
+Kokeile kirjoittaa ikuinen silmukka ja katso, mitä tapahtuu. Tämä sivusto on turvallinen paikka kokeilla tällaisia asioita, sillä sivu lopettaa ohjelman suorituksen 5 sekunnin jälkeen.
+
+<KoodiEditori />
+
+<Harjoitus
+    name="Silmukan ehto" 
+    points={10} 
+    answer="lopeta"         
+    level={1}>
+
+Tutki seuraavaa ohjelmaa ja koita ymmärtää miten saat ohjelman lopettamaan suorituksensa. Kopioi ohjelma koodieditoriin ja kokeile sitä (huomaa, että sivuston rajoitteista johtuen sinun tulee antaa ohjelmalle syötteitä 5 sekunnin sisällä, muuten ohjelma lopettaa suorituksensa automaattisesti).
+
+```python
+syote = ""
+while syote != "lopeta":
+    syote = input("Kirjoita 'lopeta' lopettaaksesi: ")
+    print(syote)
+```
+</Harjoitus>
+
+<Harjoitus
+    name="Ikuinen silmukka" 
+    points={10} 
+    answer="5050"      
+    level={1}>
+
+Korjaa alla oleva ohjelma siten, että sen suoritus ei jatku ikuisesti vaan tulostaa vain ensimmäisten 100 luonnollisen luvun summan.
+
+```python
+i = 1
+summa = 0
+while True:
+    summa += i
+    i += 1
+print(summa)
+```
+
+</Harjoitus>

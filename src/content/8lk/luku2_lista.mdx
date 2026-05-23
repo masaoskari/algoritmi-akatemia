@@ -1,0 +1,54 @@
+---
+title: "Listat"
+slug: "8lk/listat"
+category: "8lk"
+---
+
+# Listat
+
+Listat ovat Pythonin tietorakenteita, jotka voivat sisältää useita arvoja. Ne ovat hyödyllisiä, kun haluamme tallentaa ja käsitellä useita liittyviä tietoja yhdessä paikassa. Listat kirjoitetaan hakasulkeiden `[]` sisään, ja niiden alkiot erotetaan pilkuilla. Esimerkiksi:
+
+```python
+lista = [1, 2, 3, 4, 5]
+```
+Tässä siis määritellään muuttuja `lista`, joka sisältää viisi kokonaislukua. Listat voivat sisältää myös muita tietotyyppejä, kuten merkkijonoja tai jopa muita listoja. 
+
+Listan alkiot voidaan hakea indeksin avulla. Indeksit alkavat nollasta, joten ensimmäinen alkio on indeksissä 0, toinen alkio indeksissä 1, ja niin edelleen. Esimerkiksi:
+
+```python
+print(lista[0])  # Tulostaa 1
+print(lista[2])  # Tulostaa 3
+```
+
+Listoihin voidaan lisätä uusia alkioita `append()`-metodilla:
+
+```python
+lista.append(6)
+print(lista)  # Tulostaa [1, 2, 3, 4, 5, 6]
+```
+Voimme myös poistaa alkioita `remove()`-metodilla:
+
+```python
+lista.remove(3)
+print(lista)  # Tulostaa [1, 2, 4, 5, 6], koska indeksin 3 alkio on poistettu
+```
+<Harjoitus
+    name="Listan käsittely" 
+    points={10} 
+    answer="[1, 2, 4, 5, 6]"         
+    level={1}>
+
+Kirjoita ohjelma, joka luo listan, johon on tallennettu luvut 1-5. Lisää listaan luvun 6 ja poistaa listasta luvun 3. Lopuksi ohjelman tulisi tulostaa lopullinen lista.
+
+</Harjoitus>
+
+<Harjoitus
+    name="Listan indeksit" 
+    points={10} 
+    answer="1\n4\n6"         
+    level={1}>
+
+Kirjoita ohjelma, joka luo listan, johon on tallennettu luvut 1-5. Tulosta listan ensimmäinen, kolmas ja viimeinen alkio.
+</Harjoitus>
+
+Pidetään tämä luku lyhyenä, sillä listat muuttuvat mielenkiintoisemmiksi, kun opimme lisää silmukoista. Jatketaan siis seuraavassa luvussa silmukoiden parissa, ja opitaan miten voimme käyttää silmukoita listojen käsittelyyn.
